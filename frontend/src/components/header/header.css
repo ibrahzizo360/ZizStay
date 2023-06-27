@@ -1,0 +1,109 @@
+.header{
+    background-color: #003580;
+    color: white;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+.headerContainer{
+    width: 100%;
+    max-width: 1024px;
+    margin: 20px 0 100px 0;
+}
+.headerContainer.listMode{
+    margin: 20px 0 40px 0;
+}
+.headerList{
+    display: flex;
+    gap: 40px;
+}
+.headerListItem{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.headerListItem.active{
+    border: 1px solid white;
+    padding: 10px;
+    border-radius: 20px;
+}
+.headerSearch{
+    height: 30px;
+    background-color: white;
+    display: flex;
+    border: 3px solid #febb08;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-radius: 5px;
+    position: absolute;
+    bottom: -25px;
+    width: 100%;
+    max-width: 1024px;
+}
+.headerIcon{
+    color: lightgray;
+}
+.headerBtn{
+    background-color: #0071c2;
+    color: white;
+    font-weight: 600;
+    font-size: larger;
+    border: none;
+    padding: 14px;
+    cursor: pointer;
+}
+.headerSearchItem{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.headerSearchInput{
+    border: none;
+}
+.headerSearchInput{
+    outline: none;
+}
+.headerSearchText{
+    color: lightgray;
+    cursor: pointer;
+}
+.date{
+    position: absolute;
+    top: 50px;
+    z-index: 2;
+}
+.options{
+    z-index: 2;
+    position: absolute;
+    top: 50px;
+    background-color: white;
+    color: gray;
+    border-radius: 5px;
+    box-shadow: 0 0 10px -5px rgba(0, 0, 0, 0.4);
+}
+.optionItem{
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+.optionCounter{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: black;
+}
+.optionCounterBtn{
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    font-size: large;
+    border: 1px solid #0071c2;
+    color: #0071c2;
+    cursor: pointer;
+}
+.optionCounterBtn:disabled{
+    cursor: not-allowed;
+}
