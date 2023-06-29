@@ -6,12 +6,16 @@ import authRoutes from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import roomRoutes from './routes/roomRoutes.js';
 import cookieParser from 'cookie-parser';
+import cors from "cors";
 
 
 dotenv.config();
 const app = express();
-app.use(express.json())
-app.use(cookieParser())
+app.use(cors(
+    {origin:'http://localhost:3000'}
+));
+app.use(express.json());
+app.use(cookieParser());
 
 
 const connectDB = async() => {
@@ -28,7 +32,7 @@ const connectDB = async() => {
 };
 
 
-app.use('/api/hotel', hotelRoutes)
+app.use('/api/hotels', hotelRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
 app.use("/api/room", roomRoutes);
