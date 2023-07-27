@@ -1,6 +1,6 @@
 import  './header.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faBed, faCalendarDays, faCar, faPerson, faPlane, faTaxi} from '@fortawesome/free-solid-svg-icons'
+import {faBed, faCalendarDays, faCar, faPerson, faPlane, faTaxi} from '@fortawesome/free-solid-svg-icons';
 import {DateRange} from 'react-date-range'
 import { useContext, useState } from 'react'
 import 'react-date-range/dist/styles.css'; // main style file

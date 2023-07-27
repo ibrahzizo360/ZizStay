@@ -7,25 +7,24 @@ import {
   updateRoom,
   updateRoomAvailability,
 } from "../controllers/roomController.js";
-import { verifyAdmin } from "../middlewares/authMiddleware.js";
+import { verifyAdmin, authenticateUser } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
 //CREATE
-router.post("/:hotelid", verifyAdmin, createRoom);
+router.post("/:hotelid", authenticateUser, verifyAdmin, createRoom);
 
 //UPDATE
-router.put("/availability/:id", updateRoomAvailability);
-router.put("/:id", verifyAdmin, updateRoom);
+router.put("/availability/:id", authenticateUser, verifyAdmin, updateRoomAvailability);
+router.put("/:id", authenticateUser, verifyAdmin, updateRoom);
 
 //DELETE
-router.delete("/:id/:hotelid", verifyAdmin, deleteRoom);
-
+router.delete("/:id/:hotelid",authenticateUser, verifyAdmin, deleteRoom);
 
 //GET
-router.get("/:id", getRoom);
+router.get("/:id", authenticateUser, verifyAdmin, getRoom);
 
 //GET ALL
-router.get("/", getRooms);
+router.get("/", authenticateUser, verifyAdmin, getRooms);
 
 export default router;

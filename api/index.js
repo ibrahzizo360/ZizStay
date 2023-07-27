@@ -12,7 +12,7 @@ import cors from "cors";
 dotenv.config();
 const app = express();
 app.use(cors(
-    {origin:'http://localhost:3000'}
+    {origin: ['http://localhost:3000',"http://localhost:3001"]}
 ));
 app.use(express.json());
 app.use(cookieParser());
@@ -34,8 +34,8 @@ const connectDB = async() => {
 
 app.use('/api/hotels', hotelRoutes)
 app.use('/api/auth', authRoutes)
-app.use('/api/user', userRoutes)
-app.use("/api/room", roomRoutes);
+app.use('/api/users', userRoutes)
+app.use("/api/rooms", roomRoutes);
 
 
 app.use((err, req, res, next) => {

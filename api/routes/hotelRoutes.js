@@ -1,17 +1,17 @@
 import express from 'express';
 import  {addHotel, getAllHotels, deleteHotel, getHotelById ,updateHotel, countByCity, countByType, getHotelRooms}  from '../controllers/hotelController.js';
-import { verifyAdmin} from '../middlewares/authMiddleware.js';
+import { verifyAdmin, authenticateUser} from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
 
 //CREATE
-router.post("/", verifyAdmin, addHotel);
+router.post("/", authenticateUser, verifyAdmin, addHotel);
 
 //UPDATE
-router.put("/:id", verifyAdmin, updateHotel);
+router.put("/:id", authenticateUser, verifyAdmin, updateHotel);
 
 //DELETE
-router.delete("/:id", verifyAdmin, deleteHotel);
+router.delete("/:id", authenticateUser, verifyAdmin, deleteHotel);
 
 //GET
 router.get("/find/:id", getHotelById);
@@ -23,6 +23,6 @@ router.get("/countByCity", countByCity);
 
 router.get("/countByType", countByType);
 
-router.get("/room/:id", getHotelRooms);
+router.get("/rooms/:id", getHotelRooms);
 
 export default router

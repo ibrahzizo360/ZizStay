@@ -4,7 +4,7 @@ import "./mailContainer.css"
 const MailContainer = () => {
   return (
     <div className="mail">
-        <p className="mailTitle">Save time, save money!</p>
+        <span className="mailTitle">Save time, save money!</span>
         <span className="desc">sign up and we'll send the best deals to you</span>
         <div className="mailInputContainer">
             <input type="text" className="mailInput" placeholder="Your email address"/>

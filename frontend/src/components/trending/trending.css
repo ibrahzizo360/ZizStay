@@ -1,0 +1,55 @@
+.trending{
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 1;
+}
+.top {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
+    gap: 20px;
+}
+
+.trendingItem{
+    position: relative;
+    color: white;
+    
+}
+.trending .top img{
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    object-fit: cover;
+    height: 280px;
+}
+.trending .bottom img{
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    object-fit: cover;
+    height: 280px;
+}
+.trendingTitles{
+    position: absolute;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    top: 15px;
+    left: 22px;
+    font-size: 11px;
+}
+
+.trending .bottom .trendingTitles img, .trending .top .trendingTitles img{
+    height: 25px;
+    width: 25px;
+    object-fit: cover;
+}
+
+.bottom{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Two columns with equal width */
+    gap: 20px;
+}

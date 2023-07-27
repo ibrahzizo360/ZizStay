@@ -1,0 +1,31 @@
+.explore{
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    z-index: 1;
+    margin-bottom: 30px;
+}
+.exploreItem{
+    height: 200px;
+    flex: 1;
+}
+.exploreImg{
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    object-fit: cover;
+    height: 150px;
+}
+
+.exploreTitles>h1{
+    font-size: 18px;
+    color: #444;
+    text-transform: capitalize;
+}
+  
+.exploreTitles>h2{
+    font-size: 14px;
+    font-weight: 300;
+}

@@ -1,14 +1,14 @@
 .mail{
     width: 100%;
     margin-top: 50px;
-    background-color: #003580;
+    background-color: #FA7436;
     color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 4px;
-    padding: 40px;
+    padding: 60px 40px;
 }
 .mailTitle{
     margin: 0;
@@ -33,7 +33,7 @@
     font-weight: 200;
 }
 .mailInputContainer>button{
-    background-color: #0071c2;
+    background-color: #FA7436;
     height: 50px;
     color: white;
     font-weight: 500;
