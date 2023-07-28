@@ -11,6 +11,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin: 0 auto;
 }
 .navButton{
     margin-left: 20px;
@@ -23,4 +24,11 @@
 }
 .logo{
     font-weight: 500;
+}
+
+@media screen and (max-width: 1024px) {
+.navContainer {
+       margin: 0 auto;
+       width: 97%;
+    }
 }

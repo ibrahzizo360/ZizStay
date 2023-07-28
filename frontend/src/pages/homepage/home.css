@@ -1,16 +1,23 @@
 .homeContainer{
-    margin-top: 50px;
+    padding-top: 150px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 15px;
+    flex-shrink: 0;
 }
 .homeTitle{
-    width: 1024px;
+    width: 100%;
     font-size: 25px;
 }
 
 .homeContainer p {
-    margin-left: -695px;
+    width: 100%;
     margin-top: -22px;
+}
+
+@media screen and (max-width: 1024px) {
+    .homeContainer{
+        padding-top: 250px;
+    }
 }

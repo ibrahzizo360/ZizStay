@@ -32,13 +32,15 @@
   font-weight: 500;
 }
 
+
 .fpRating>button{
-  background-color: #003580;
+  background-color: #FA7436;
   color: white;
   border: none;
-  padding: 3px;
+  padding: 4px 8px;
   margin-right: 10px;
   font-weight: bold;
+  border-radius: 1px;
 }
 
 .fpRating>span{

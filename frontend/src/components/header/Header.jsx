@@ -13,7 +13,9 @@ const Header = ({type}) => {
   const [dates, setDates] = useState([{
     startDate: new Date(),
     endDate: new Date(),
-    key: 'selection'
+    key: 'selection',
+    scroll: {enabled: true,
+    calenderWidth: 400},
   }])
   const [destination, setDestination] = useState("");
   const [openDate, setOpenDate] = useState(false);

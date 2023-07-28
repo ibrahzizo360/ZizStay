@@ -23,7 +23,7 @@
   
   .lsTitle{
     font-size: 20px;
-    color: #555;
+    color: #333;
     margin-bottom: 10px;
   }
   
@@ -60,7 +60,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
-    color: #555;
+    color: #333;
     font-size: 12px;
   }
   
@@ -70,7 +70,7 @@
   
   .listSearch>button{
     padding: 10px;
-    background-color: #0071c2;
+    background-color: #FA7436;
     color: white;
     border: none;
     width: 100%;
