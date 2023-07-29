@@ -46,3 +46,15 @@
 .fpRating>span{
   font-size: 14px;
 }
+
+@media screen and (max-width: 1024px){
+  .fp{
+    overflow-x: scroll;
+    margin: 0 auto;
+  }
+  .fpItem{
+    flex: none;
+    width: 180px;
+    flex-shrink: 0;
+  }
+}

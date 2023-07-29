@@ -1,14 +1,14 @@
-.pList{
+.pList {
   width: 100%;
   max-width: 1024px;
   display: flex;
   justify-content: space-between;
   gap: 20px;
+  
 }
-
-.pListItem{
-  flex:1;
+.pListItem {
   cursor: pointer;
+  flex: 1;
 }
 
 .pListImg{
@@ -27,4 +27,16 @@
 .pListTitles>h2{
   font-size: 14px;
   font-weight: 300;
+}
+
+@media screen and (max-width: 1024px) {
+  .pList{
+    overflow-x: scroll;
+    margin: 0 auto;
+  }
+  .pListItem{
+    flex-shrink: 0;
+    width: 180px;
+    flex: none;
+  }
 }

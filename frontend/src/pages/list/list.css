@@ -81,3 +81,44 @@
   .listResult {
     flex: 3;
   }
+
+@media screen and (max-width: 768px){
+  .listWrapper{
+    flex-direction: column;
+  }
+  .listSearch{
+    width: 92%;
+    margin: 0 auto;
+    position: static;
+  }
+  .listResult{
+    flex: none;
+    
+  }
+  .lsTitle{
+    display: none;
+  }
+  .lsItem:nth-of-type(1), .lsItem:nth-of-type(2){
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+  }
+  .lsItem:nth-of-type(1) input, .lsItem:nth-of-type(2) span{
+    width: 40%;
+    border-radius: 3px;
+    padding: 7px;
+    font-size: 3vw;
+  }
+  .lsItem>label{
+    font-weight: 500;
+    font-size: 18px;
+  }
+  .lsOptionItem span, small {
+    font-size: 16px;
+  }
+  .lsOptionItem input{
+    width: 10%;
+    padding: 5px;
+  }
+} 

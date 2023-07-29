@@ -50,6 +50,23 @@
 
 .bottom{
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Two columns with equal width */
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+}
+
+@media screen and (max-width:1024){
+    .trending .top img{
+        width: 100%;
+        border-radius: 5px;
+        overflow: hidden;
+        object-fit: cover;
+        height: 180px;
+    }
+    .trending .bottom img{
+        width: 100%;
+        border-radius: 5px;
+        overflow: hidden;
+        object-fit: cover;
+        height: 180px;
+    }
 }

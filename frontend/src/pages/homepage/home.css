@@ -1,5 +1,5 @@
 .homeContainer{
-    padding-top: 150px;
+    padding-top: 70px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,15 +9,38 @@
 .homeTitle{
     width: 100%;
     font-size: 25px;
+    max-width: 1024px;
 }
 
 .homeContainer p {
     width: 100%;
     margin-top: -22px;
+    max-width: 1024px;
 }
 
 @media screen and (max-width: 1024px) {
+    .homeTitle{
+        width: 97%;
+        margin: 0% auto;
+    }
+    .homeContainer p {
+        width: 97%;
+        margin: 0% auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
     .homeContainer{
         padding-top: 250px;
+        overflow-x: visible;
     }
+    .homeTitle{
+        width: 97%;
+        margin: 0% auto;
+    }
+    .homeContainer p {
+        width: 97%;
+        margin: 0% auto;
+    }
+    
 }

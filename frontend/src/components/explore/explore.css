@@ -6,9 +6,10 @@
     gap: 20px;
     z-index: 1;
     margin-bottom: 30px;
+    height: 300px;
 }
 .exploreItem{
-    height: 200px;
+    height: 250px;
     flex: 1;
 }
 .exploreImg{
@@ -16,7 +17,7 @@
     border-radius: 10px;
     overflow: hidden;
     object-fit: cover;
-    height: 150px;
+    height: 160px;
 }
 
 .exploreTitles>h1{
@@ -29,3 +30,15 @@
     font-size: 14px;
     font-weight: 300;
 }
+
+@media screen and (max-width: 1024px) {
+    .explore{
+      overflow-x: scroll;
+      margin: 0 auto;
+    }
+    .exploreItem{
+      flex-shrink: 0;
+      width: 200px;
+      flex: none;
+    }
+  }
