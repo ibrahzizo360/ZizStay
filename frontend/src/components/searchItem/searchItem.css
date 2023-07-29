@@ -107,3 +107,25 @@
     cursor: pointer;
     border-radius: 5px;
   }
+
+  @media screen and (max-width: 768px){
+    .siImg{
+      width: 170px;
+    }
+    .siCheckButton{
+      display: none;
+    }
+    .siRating span {
+      font-size: 2.8vw;
+    }
+    .siRating button{
+      height: 2vh;
+      width: 2vw;
+      font-size: 2vw;
+      padding: 0;
+
+    }
+    .siTitle{
+      font-size: 3vw;
+    }
+  }  

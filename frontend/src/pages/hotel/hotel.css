@@ -148,3 +148,13 @@
     color: lightgray;
     cursor: pointer;
   }
+
+  @media screen and (max-width:1024px){
+    .hotelWrapper{
+      width: 97%;
+      margin: 0 auto;
+    }
+    .hotelDetails{
+      flex-direction: column;
+    }
+  }

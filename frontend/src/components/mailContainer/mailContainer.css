@@ -24,7 +24,7 @@
     gap: 5px;
 }
 .mailInput{
-    width: 300px;
+    width: 70%;
     height: 30px;
     padding: 10px;
     border: none;
@@ -40,7 +40,8 @@
     border: none;
     border-radius: 3px;
     cursor: pointer;
-    width: 150px;
+    width: 35%;
     font-size: 20px;
     font-weight: 200;
 }
+

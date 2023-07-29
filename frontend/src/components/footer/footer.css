@@ -24,3 +24,11 @@
 .fText{
     margin-bottom: 20px;
 }
+
+@media screen and (max-width:1024px){
+    .footer{
+        width: 97%;
+        margin: 0 auto;
+    }
+    
+}

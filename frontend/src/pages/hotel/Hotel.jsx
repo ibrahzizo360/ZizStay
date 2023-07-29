@@ -29,7 +29,7 @@ const Hotel = () => {
   const navigate = useNavigate();
 
   const { dates, options } = useContext(SearchContext);
-  console.log(dates);
+
 
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
@@ -39,7 +39,6 @@ const Hotel = () => {
   }
 
   const days = dayDifference(dates[0].endDate, dates[0].startDate);
-  console.log(days)
 
   const handleOpen = (i) => {
     setSlideNumber(i);
