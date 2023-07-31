@@ -51,10 +51,59 @@
   .fp{
     overflow-x: scroll;
     margin: 0 auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
   .fpItem{
     flex: none;
-    width: 180px;
+    width: 25vw;
     flex-shrink: 0;
+    height: 45vh;
+  }
+  .fp::-webkit-scrollbar {
+    display: none;
+}
+}
+
+@media screen and (max-width: 768px){
+  .fp{
+    overflow-x: scroll;
+    margin: 0 auto;
+  }
+  .fpItem{
+    flex: none;
+    width: 25vw;
+    flex-shrink: 0;
+    height: 40vh;
+  }
+  .fpImg{
+    height: 20vh;
+  } 
+}
+@media screen and (max-width: 530px){
+  .fp{
+    overflow-x: scroll;
+    margin: 0 auto;
+  }
+  .fpItem{
+    flex: none;
+    width: 25vw;
+    flex-shrink: 0;
+    height: 40vh;
+  }
+  .fpImg{
+    height: 15vh;
+  } 
+  .fpPrice{
+    font-size: 2.5vw;
+  }
+  .fpRating{
+    padding: 0;
+  }
+  .fpName{
+    font-size: 3vw;
+  }
+  .fpCity{
+    font-size: 2.6vw;
   }
 }

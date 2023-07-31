@@ -33,10 +33,31 @@
   .pList{
     overflow-x: scroll;
     margin: 0 auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
   .pListItem{
     flex-shrink: 0;
     width: 180px;
     flex: none;
+    
+  }
+  .pList::-webkit-scrollbar {
+    display: none;
+}
+}
+
+@media screen and (max-width: 460px) {
+  .pList{
+    overflow-x: scroll;
+    margin: 0 auto;
+  }
+  .pListItem{
+    flex-shrink: 0;
+    width: 40vw;
+    flex: none;
+  }
+  .pListImg{
+    height: 30vw;
   }
 }

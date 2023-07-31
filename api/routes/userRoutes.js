@@ -1,6 +1,6 @@
-import { getAllUsers, getUserById, deleteUser, updateUser} from "../controllers/userController.js";
+import { getAllUsers, getUserById, deleteUser, updateUser, getUsersCount } from "../controllers/userController.js";
 import express from "express";
-import { authenticateUser, verifyAdmin, verifyUser } from "../middlewares/authMiddleware.js";
+import { authenticateUser, verifyAdmin, verifyUser} from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
@@ -11,9 +11,12 @@ router.put("/:id", authenticateUser, verifyUser, updateUser);
 router.delete("/:id", authenticateUser, verifyUser, deleteUser);
 
 // GET
-router.get("/:id", authenticateUser, verifyUser, getUserById);
+router.get("/find/:id", authenticateUser, verifyUser, getUserById);
 
 // GET ALL
 router.get("/", authenticateUser, verifyAdmin, getAllUsers);
+
+//GET COUNT OF ALL USERS
+router.get("/count", authenticateUser, verifyAdmin, getUsersCount)
 
 export default router;

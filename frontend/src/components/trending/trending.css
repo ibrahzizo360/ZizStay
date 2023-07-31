@@ -1,5 +1,5 @@
 .trending{
-    width: 100%;
+    width: 94vw;
     max-width: 1024px;
     display: flex;
     flex-direction: column;
@@ -39,7 +39,7 @@
     gap: 15px;
     top: 15px;
     left: 22px;
-    font-size: 11px;
+    font-size: 1vw;
 }
 
 .trending .bottom .trendingTitles img, .trending .top .trendingTitles img{
@@ -54,19 +54,19 @@
     gap: 20px;
 }
 
-@media screen and (max-width:1024){
+@media screen and (max-width:668px){
     .trending .top img{
         width: 100%;
         border-radius: 5px;
         overflow: hidden;
         object-fit: cover;
-        height: 180px;
+        height: 15vh;
     }
     .trending .bottom img{
         width: 100%;
         border-radius: 5px;
         overflow: hidden;
         object-fit: cover;
-        height: 180px;
+        height: 15vh;
     }
 }

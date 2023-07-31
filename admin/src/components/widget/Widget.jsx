@@ -4,20 +4,27 @@ import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
+import useUsersCount from "../../hooks/useUsersCount";
+import useHotelsCount from "../../hooks/useHotelsCount";
+import useRoomsCount from "../../hooks/useRoomsCount";
 
 const Widget = ({ type }) => {
-  let data;
+  let dataInfo;
+  const token = localStorage.getItem('token')
+  const {usersCount} = useUsersCount('users/count',token);
+  const {hotelsCount} = useHotelsCount('hotels/count',token);
+  const {roomsCount} = useRoomsCount('rooms/count',token);
 
-  //temporary
-  const amount = 100;
-  const diff = 20;
+
+ 
 
   switch (type) {
     case "user":
-      data = {
+      dataInfo = {
         title: "USERS",
         isMoney: false,
         link: "See all users",
+        amount: usersCount,
         icon: (
           <PersonOutlinedIcon
             className="icon"
@@ -29,11 +36,12 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "order":
-      data = {
-        title: "ORDERS",
+    case "hotel":
+      dataInfo = {
+        title: "HOTELS",
         isMoney: false,
-        link: "View all orders",
+        amount: hotelsCount,
+        link: "View all hotels",
         icon: (
           <ShoppingCartOutlinedIcon
             className="icon"
@@ -46,9 +54,10 @@ const Widget = ({ type }) => {
       };
       break;
     case "earning":
-      data = {
+      dataInfo = {
         title: "EARNINGS",
         isMoney: true,
+        amount: 200,
         link: "View net earnings",
         icon: (
           <MonetizationOnOutlinedIcon
@@ -58,11 +67,12 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "balance":
-      data = {
-        title: "BALANCE",
-        isMoney: true,
-        link: "See details",
+    case "room":
+      dataInfo = {
+        title: "ROOMS",
+        isMoney: false,
+        amount: roomsCount,
+        link: "See rooms available",
         icon: (
           <AccountBalanceWalletOutlinedIcon
             className="icon"
@@ -81,18 +91,18 @@ const Widget = ({ type }) => {
   return (
     <div className="widget">
       <div className="left">
-        <span className="title">{data.title}</span>
+        <span className="title">{dataInfo.title}</span>
         <span className="counter">
-          {data.isMoney && "$"} {amount}
+          {dataInfo.isMoney && "$"} {dataInfo.amount}
         </span>
-        <span className="link">{data.link}</span>
+        <span className="link">{dataInfo.link}</span>
       </div>
       <div className="right">
         <div className="percentage positive">
           <KeyboardArrowUpIcon />
-          {diff} %
+          {20} %
         </div>
-        {data.icon}
+        {dataInfo.icon}
       </div>
     </div>
   );

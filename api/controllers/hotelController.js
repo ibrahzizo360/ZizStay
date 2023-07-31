@@ -101,3 +101,12 @@ export const countByCity = async (req, res, next) => {
       next(err);
     }
   };
+
+  export const getHotelsCount = async (req, res, next) => {
+    try{
+        const count = await Hotel.countDocuments()
+        res.status(200).json({"count": count})
+    }catch(err){
+        next(err)
+    }
+}  

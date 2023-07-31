@@ -6,7 +6,7 @@
     gap: 20px;
     z-index: 1;
     margin-bottom: 30px;
-    height: 300px;
+    height: 280px;
 }
 .exploreItem{
     height: 250px;
@@ -35,10 +35,33 @@
     .explore{
       overflow-x: scroll;
       margin: 0 auto;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
     .exploreItem{
       flex-shrink: 0;
       width: 200px;
       flex: none;
     }
+    .explore::-webkit-scrollbar {
+        display: none;
+    }
   }
+
+@media screen and (max-width: 460px) {
+    .explore{
+      overflow-x: scroll;
+      margin: 0 auto;
+      
+
+    }
+    
+    .exploreItem{
+      flex-shrink: 0;
+      width: 160px;
+      flex: none;
+    }
+    .exploreImg{
+        height: 16vh;
+    }
+  }  
