@@ -4,18 +4,15 @@ import Axios from "../utils/Axios";
 
 const useHotelsCount = (url, token) => {
   const [hotelsCount, setHotelsCount] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState();
 
   const fetchData = async () => {
     try {
-      setLoading(true);
       const response = await Axios({
         url: url,
         method: "GET",
         headers: {Authorization: `Bearer ${token}`}
       });
-
+      setHotelsCount(response.data.count);
     } catch (err) {
       console.log(err)
     }
