@@ -1,6 +1,5 @@
 import Room from "../models/room.js";
 import Hotel from "../models/hotel.js";
-import { createError } from "../middlewares/errorMiddleware.js";
 
 export const createRoom = async (req, res, next) => {
   const hotelId = req.params.hotelid;
@@ -33,21 +32,23 @@ export const updateRoom = async (req, res, next) => {
     next(err);
   }
 };
+
 export const updateRoomAvailability = async (req, res, next) => {
   try {
     await Room.updateOne(
-      { "roomNumbers._id": req.params.id },
+      { "roomNumbers._id": req.params.roomId },
       {
         $push: {
           "roomNumbers.$.unavailableDates": req.body.dates
         },
       }
     );
-    res.status(200).json("Room status has been updated.");
+    res.status(200).json({message: "room updated succesfully"});
   } catch (err) {
     next(err);
   }
 };
+
 
 export const deleteRoom = async (req, res, next) => {
   const hotelId = req.params.hotelid;

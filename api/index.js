@@ -5,6 +5,7 @@ import hotelRoutes from './routes/hotelRoutes.js';
 import authRoutes from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import roomRoutes from './routes/roomRoutes.js';
+import bookingRoutes from './routes/bookingRoutes.js';
 import cookieParser from 'cookie-parser';
 import cors from "cors";
 
@@ -36,6 +37,7 @@ app.use('/api/hotels', hotelRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/users', userRoutes)
 app.use("/api/rooms", roomRoutes);
+app.use("/api/bookings", bookingRoutes);
 
 
 app.use((err, req, res, next) => {

@@ -16,15 +16,13 @@ const Widget = ({ type }) => {
   const {roomsCount} = useRoomsCount('rooms/count',token);
 
 
- 
-
   switch (type) {
     case "user":
       dataInfo = {
         title: "USERS",
         isMoney: false,
         link: "See all users",
-        amount: usersCount,
+        amount: usersCount? usersCount: "N/A",
         icon: (
           <PersonOutlinedIcon
             className="icon"
@@ -40,7 +38,7 @@ const Widget = ({ type }) => {
       dataInfo = {
         title: "HOTELS",
         isMoney: false,
-        amount: hotelsCount,
+        amount: hotelsCount? hotelsCount: "N/A",
         link: "View all hotels",
         icon: (
           <ShoppingCartOutlinedIcon
@@ -53,6 +51,23 @@ const Widget = ({ type }) => {
         ),
       };
       break;
+      case "room":
+        dataInfo = {
+          title: "ROOMS",
+          isMoney: false,
+          amount: roomsCount? roomsCount: "N/A",
+          link: "See rooms available",
+          icon: (
+            <AccountBalanceWalletOutlinedIcon
+              className="icon"
+              style={{
+                backgroundColor: "rgba(128, 0, 128, 0.2)",
+                color: "purple",
+              }}
+            />
+          ),
+        };
+        break;  
     case "earning":
       dataInfo = {
         title: "EARNINGS",
@@ -63,23 +78,6 @@ const Widget = ({ type }) => {
           <MonetizationOnOutlinedIcon
             className="icon"
             style={{ backgroundColor: "rgba(0, 128, 0, 0.2)", color: "green" }}
-          />
-        ),
-      };
-      break;
-    case "room":
-      dataInfo = {
-        title: "ROOMS",
-        isMoney: false,
-        amount: roomsCount,
-        link: "See rooms available",
-        icon: (
-          <AccountBalanceWalletOutlinedIcon
-            className="icon"
-            style={{
-              backgroundColor: "rgba(128, 0, 128, 0.2)",
-              color: "purple",
-            }}
           />
         ),
       };
