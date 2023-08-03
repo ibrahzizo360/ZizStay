@@ -95,7 +95,7 @@ export const roomInputs = [
     placeholder: "2 bed room",
   },
   {
-    id: "desc",
+    id: "description",
     label: "Description",
     type: "text",
     placeholder: "King size bed, 1 bathroom",

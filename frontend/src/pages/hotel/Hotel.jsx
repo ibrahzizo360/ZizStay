@@ -30,17 +30,38 @@ const Hotel = () => {
 
   const { dates, options } = useContext(SearchContext);
 
-
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
+
   function dayDifference(date1, date2) {
     const timeDiff = Math.abs(date2.getTime() - date1.getTime());
     const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
     return diffDays;
   }
 
-  const days = dayDifference(dates[0].endDate, dates[0].startDate);
+  let startDate = new Date();
+  let endDate = new Date(startDate.getTime() + MILLISECONDS_PER_DAY);
 
-  const amount = days * data.cheapestPrice * options.rooms;
+  if (dates && dates[0]) {
+    startDate = dates[0].startDate;
+    endDate = dates[0].endDate;
+  }
+
+  const days = dayDifference(endDate, startDate);
+
+  console.log('data:', data);
+  console.log('data.cheapestPrice:', data.cheapestPrice);
+  console.log('options:', options);
+  console.log('days:', days);
+
+  let amount = 0;
+
+  if (data && data.cheapestPrice && options && days) {
+    amount = days * data.cheapestPrice * options.rooms;
+  }
+
+  console.log('amount:', amount);
+
+
 
   const handleOpen = (i) => {
     setSlideNumber(i);
@@ -129,7 +150,7 @@ const Hotel = () => {
             <div className="hotelDetails">
               <div className="hotelDetailsTexts">
                 <h1 className="hotelTitle">{data.title}</h1>
-                <p className="hotelDesc">{data.desc}</p>
+                <p className="hotelDesc">{data.description}</p>
               </div>
               <div className="hotelDetailsPrice">
                 <h1>Perfect for a {days}-night stay!</h1>

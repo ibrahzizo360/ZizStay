@@ -8,13 +8,14 @@
 }
 .top {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
+    grid-template-columns: repeat(2, 1fr); 
     gap: 20px;
 }
 
 .trendingItem{
     position: relative;
     color: white;
+    cursor: pointer;
     
 }
 .trending .top img{

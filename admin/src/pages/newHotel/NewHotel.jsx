@@ -4,7 +4,6 @@ import Navbar from "../../components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useState } from "react";
 import { hotelInputs } from "../../formSource";
-import useFetch from "../../hooks/useFetch";
 import axios from "axios";
 import { addHotel } from "../../utils/hotel";
 import { toast } from "react-toastify";
@@ -12,23 +11,14 @@ import { toast } from "react-toastify";
 const NewHotel = () => {
   const [files, setFiles] = useState("");
   const [info, setInfo] = useState({});
-  const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState(false);
   
   const token = localStorage.getItem("token")
-  // const { data, loading, error } = useFetch("http://localhost:5000/api/rooms", token);
 
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
-  const handleSelect = (e) => {
-    const value = Array.from(
-      e.target.selectedOptions,
-      (option) => option.value
-    );
-    setRooms(value);
-  };
   
 
   const handleClick = async (e) => {
@@ -131,20 +121,7 @@ const NewHotel = () => {
                   <option value={true}>Yes</option>
                 </select>
               </div>
-              {/* <div className="selectRooms">
-                <label>Rooms</label>
-                <select id="rooms" multiple onChange={handleSelect}>
-                  {loading
-                    ? "loading"
-                    : data &&
-                      data.map((room) => (
-                        <option key={room._id} value={room._id}>
-                          {room.title}
-                        </option>
-                      ))}
-                </select>
-              </div> */}
-              <button onClick={handleClick}>Send</button>
+              <button onClick={handleClick} disabled={loading}>Send</button>
             </form>
           </div>
         </div>

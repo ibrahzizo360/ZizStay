@@ -1,19 +1,29 @@
 import "./newRoom.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
-import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { roomInputs } from "../../formSource";
 import useFetch from "../../hooks/useFetch";
-import axios from "axios";
+import { addRoom } from "../../utils/room";
+import { toast } from "react-toastify";
+
 
 const NewRoom = () => {
   const [info, setInfo] = useState({});
   const [hotelId, setHotelId] = useState(undefined);
   const [rooms, setRooms] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const token = localStorage.getItem("token");
-  const { data, loading, error } = useFetch("http://localhost:5000/api/hotels", token);
+  const { data, error } = useFetch("http://localhost:5000/api/hotels", token);
+
+  if(error){toast.error("couldn't fetch hotels")}
+
+  useEffect(() => {
+    if (data && data.length > 0) {
+      setHotelId(data[0]._id);
+    }
+  }, [data]);
 
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -23,13 +33,28 @@ const NewRoom = () => {
     e.preventDefault();
     const roomNumbers = rooms.split(",").map((room) => ({ number: room }));
     try {
-      await axios.post(`/rooms/${hotelId}`, { ...info, roomNumbers });
+      setLoading(true);
+      await toast.promise(
+        (async () => {
+          await addRoom({ ...info, roomNumbers }, token, hotelId);
+        })(),
+        {
+          pending: "Adding room...",
+          success: "Room added successfully",
+          error: "Failed to add room",
+        },
+        {
+          toastId: "addRoom",
+          position: "top-center",
+        }
+      );
     } catch (err) {
       console.log(err);
     }
+    setLoading(false);
   };
+  
 
-  console.log(info)
   return (
     <div className="new">
       <Sidebar />
@@ -63,7 +88,7 @@ const NewRoom = () => {
                 <label>Choose a hotel</label>
                 <select
                   id="hotelId"
-                  onChange={(e) => setHotelId(e.target.value)}
+                  onChange={(e) => { console.log(e.target.value); setHotelId(e.target.value); }}
                 >
                   {loading
                     ? "loading"
@@ -73,7 +98,7 @@ const NewRoom = () => {
                       ))}
                 </select>
               </div>
-              <button onClick={handleClick}>Send</button>
+              <button onClick={handleClick}>Add Room</button>
             </form>
           </div>
         </div>

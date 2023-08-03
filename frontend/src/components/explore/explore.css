@@ -11,6 +11,7 @@
 .exploreItem{
     height: 250px;
     flex: 1;
+    cursor: pointer;
 }
 .exploreImg{
     width: 100%;
