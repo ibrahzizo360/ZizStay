@@ -6,12 +6,20 @@ import { useContext, useState } from "react";
 import { SearchContext } from "../../context/SearchContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { addBooking } from "../../utils/booking";
+import { updateRoomAvailability } from "../../utils/room";
+import { toast } from "react-toastify";
+import { AuthContext } from "../../context/AuthContext";
 
-const Reserve = ({ setOpen, hotelId }) => {
-  
+const Reserve = ({ setOpen, hotelId, amount }) => {
   const [selectedRooms, setSelectedRooms] = useState([]);
-  const { data, loading, error } = useFetch(`http://localhost:5000/api/hotels/rooms/${hotelId}`);
+  const { data, error } = useFetch(`http://localhost:5000/api/hotels/rooms/${hotelId}`);
   const { dates } = useContext(SearchContext);
+  const [loading, setLoading] = useState(false);
+  const token = localStorage.getItem("token");
+  const { user } = useContext(AuthContext);
+  const userId = user._id;
+  
 
   const getDatesInRange = (startDate, endDate) => {
     const start = new Date(startDate);
@@ -54,20 +62,42 @@ const Reserve = ({ setOpen, hotelId }) => {
 
   const handleClick = async () => {
     try {
-      await Promise.all(
-        selectedRooms.map((roomId) => {
-          const res = axios.put(`http://localhost:5000/api/rooms/availability/${roomId}`, {
-            dates: alldates,
-          });
-          return res.data;
-        })
-      );
-      setOpen(false);
-      navigate("/");
-    } catch (err) {}
-  };
-  return (
-    <div className="reserve">
+      setLoading(true);
+      toast.promise(
+        (async () => {
+          await Promise.all(
+            selectedRooms.map((roomId) => {
+              const res = updateRoomAvailability(roomId,dates,token);
+              return res.data
+            })
+          );
+
+          const newBooking = {
+            userId,
+            checkInDate: Date.now(),
+            checkOutDate: Date.now(),
+            amount,
+          }
+
+          await addBooking(userId, newBooking, token);
+          setOpen(false);
+          navigate("/");
+        })(),
+        {
+          pending: "Booking rooms...",
+          success: "Hotel booked successfully",
+          error: "Failed to book hotel",
+        },
+        {
+          toastId: "bookHotel",
+          position: "top-center",
+        }
+        )
+        
+      } catch (err) {console.log(err)}
+    };
+    return (
+      <div className="reserve">
       <div className="rContainer">
         <FontAwesomeIcon
           icon={faCircleXmark}

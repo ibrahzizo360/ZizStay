@@ -3,23 +3,30 @@ import User from "../models/user.js";
 import Booking from "../models/booking.js";
 
 export const bookHotelRooms = async (req, res, next) => {
-  
-    const newBooking = new Booking(req.body);
-    const {amount} = newBooking;
-    const admin = await User.findById("64c833551953606c91a4bf2d"); 
+  const userId = req.params.id;
+  const newBooking = new Booking(req.body);
+  const { amount } = newBooking;
+  const admin = await User.findById("64c833551953606c91a4bf2d");
 
-    try {
-      await newBooking.save();
+  try {
+      const savedBooking = await newBooking.save();
+
+
+      const user = await User.findById(userId);
+      user.bookings.push(savedBooking._id);
+      await user.save();
+
       if (admin) {
-        admin.balance += amount;
-        await admin.save();
+          admin.balance += amount;
+          await admin.save();
       }
-      res.status(200).json({message: "hotel booked succesfully"});
-    } catch (err) {
+
+      res.status(200).json({ message: "hotel booked successfully" });
+  } catch (err) {
       next(err);
-    }
+  }
 };
-  
+
 export const getBookings = async (req, res, next) => {
 
     try {
@@ -31,3 +38,62 @@ export const getBookings = async (req, res, next) => {
     }
 };
   
+export const getBookingsById = async(req,res,next) => {
+  try {
+    const userId = req.params.id;
+    const bookings = await Booking.findById(userId);
+
+    res.status(200).json(bookings);
+  }
+  catch (err){
+    next(err)
+  }
+}
+
+export const getPastWeekBookings = async(req,res,next) => {
+
+  try {
+    const today = new Date();
+    const lastWeek = new Date(today);
+    lastWeek.setDate(lastWeek.getDate() - 7); // Subtract 7 days
+
+    const bookings = await Booking.aggregate([
+      {
+        $match: {
+          checkOutDate: { $gte: lastWeek },
+        },
+      },
+      {
+        $group: {
+          _id: { $dayOfWeek: '$checkOutDate' }, // Group by day of the week
+          totalAmount: { $sum: '$amount' }, // Calculate total amount for each day
+        },
+      },
+      {
+        $project: {
+          _id: 0,
+          dayOfWeek: '$_id',
+          totalAmount: 1,
+        },
+      },
+    ]);
+    res.status(200).json(bookings);
+  
+}catch(err){
+  next(err)
+}
+}
+
+export const getTotalRevenue = async (req, res, next) => {
+  try {
+    const admin = await User.findById("64c833551953606c91a4bf2d");
+
+    if (!admin) {
+      return res.status(404).json({ message: "Admin not found" });
+    }
+
+    res.status(200).json({ balance: admin.balance });
+  } catch (err) {
+    next(err);
+  }
+};

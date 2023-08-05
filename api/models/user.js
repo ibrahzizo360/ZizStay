@@ -37,7 +37,11 @@ const UserSchema = new mongoose.Schema(
     balance: {
       type: Number,
       default: 0,
-    }
+    },
+    bookings: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Booking'
+    }]
   },
   { timestamps: true }
 );

@@ -48,18 +48,11 @@ const Hotel = () => {
 
   const days = dayDifference(endDate, startDate);
 
-  console.log('data:', data);
-  console.log('data.cheapestPrice:', data.cheapestPrice);
-  console.log('options:', options);
-  console.log('days:', days);
-
   let amount = 0;
 
   if (data && data.cheapestPrice && options && days) {
     amount = days * data.cheapestPrice * options.rooms;
   }
-
-  console.log('amount:', amount);
 
 
 

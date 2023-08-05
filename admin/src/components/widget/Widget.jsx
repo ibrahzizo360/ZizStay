@@ -7,6 +7,7 @@ import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlin
 import useUsersCount from "../../hooks/useUsersCount";
 import useHotelsCount from "../../hooks/useHotelsCount";
 import useRoomsCount from "../../hooks/useRoomsCount";
+import useTotalRevenue from "../../hooks/useTotalRevenue";
 
 const Widget = ({ type }) => {
   let dataInfo;
@@ -14,6 +15,7 @@ const Widget = ({ type }) => {
   const {usersCount} = useUsersCount('users/count',token);
   const {hotelsCount} = useHotelsCount('hotels/count',token);
   const {roomsCount} = useRoomsCount('rooms/count',token);
+  const {totalRevenue} = useTotalRevenue('bookings/get/total-revenue', token)
 
 
   switch (type) {
@@ -72,7 +74,7 @@ const Widget = ({ type }) => {
       dataInfo = {
         title: "EARNINGS",
         isMoney: true,
-        amount: 200,
+        amount: totalRevenue,
         link: "View net earnings",
         icon: (
           <MonetizationOnOutlinedIcon
