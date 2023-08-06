@@ -23,7 +23,7 @@ const Home = () => {
           <Chart title="Revenues generated for the past week" aspect={2 / 1} />
         </div>
         <div className="listContainer">
-          <div className="listTitle">Latest Transactions</div>
+          <div className="listTitle">Latest Bookings</div>
           <Table />
         </div>
       </div>

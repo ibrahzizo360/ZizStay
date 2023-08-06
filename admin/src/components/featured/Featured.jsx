@@ -4,12 +4,17 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
+import useTodayRevenue from '../../hooks/useTodayRevenue';
 
 const Featured = () => {
+  const token = localStorage.getItem("token")
+  const {todayRevenue} = useTodayRevenue(token);
+  
+  console.log(todayRevenue);
   return (
     <div className="featured">
       <div className="top">
-        <h1 className="title">Total Revenue</h1>
+        <h1 className="title">Total Revenue generated today</h1>
         <MoreVertIcon fontSize="small" />
       </div>
       <div className="bottom">
@@ -17,7 +22,7 @@ const Featured = () => {
           <CircularProgressbar value={70} text={"70%"} strokeWidth={5} />
         </div>
         <p className="title">Total sales made today</p>
-        <p className="amount">$420</p>
+        <p className="amount">$ {todayRevenue}</p>
         <p className="desc">
           Previous transactions processing. Last payments may not be included.
         </p>

@@ -97,3 +97,39 @@ export const getTotalRevenue = async (req, res, next) => {
     next(err);
   }
 };
+
+export const getTodayRevenue = async (req, res, next) => {
+  try {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Set time to the beginning of the day
+
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1); // Set time to the beginning of the next day
+
+    const bookings = await Booking.aggregate([
+      {
+        $match: {
+          checkOutDate: {
+            $gte: today,
+            $lt: tomorrow,
+          },
+        },
+      },
+      {
+        $group: {
+          _id: null,
+          totalRevenue: {
+            $sum: "$amount", // Assuming you have a "totalAmount" field in your Booking schema
+          },
+        },
+      },
+    ]);
+
+    // If there are no bookings for today, return 0 revenue
+    const totalRevenue = bookings.length > 0 ? bookings[0].totalRevenue : 0;
+
+    res.status(200).json({ amount: totalRevenue });
+  } catch (err) {
+    next(err);
+  }
+};
