@@ -18,6 +18,8 @@ const useTodayRevenue = (token) => {
   };
 
   useEffect(() => {
+    fetchData(); // Fetch initial data
+
     const now = new Date();
     const nextDay = new Date(now);
     nextDay.setDate(nextDay.getDate() + 1);
@@ -29,7 +31,7 @@ const useTodayRevenue = (token) => {
     }, timeUntilNextDay);
 
     return () => clearTimeout(timeoutId);
-  }, [token]);
+  }, []);
 
   return { todayRevenue };
 };

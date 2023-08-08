@@ -53,10 +53,10 @@ const Chart = ({ aspect, title }) => {
           ...formattedData.slice(today),
           ...formattedData.slice(0, today)
         ];
-        console.log(today)
+        
 
         setData(newFormattedData);
-        console.log(newFormattedData)
+        
       })
       .catch(error => {
         console.log(error);

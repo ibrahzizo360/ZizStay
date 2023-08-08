@@ -28,14 +28,15 @@ export const bookHotelRooms = async (req, res, next) => {
 };
 
 export const getBookings = async (req, res, next) => {
+  try {
+      const bookings = await Booking.find()
+          .sort({ createdAt: -1 })  // Sort by createdAt in descending order (latest first)
+          .limit(5);                // Limit the result to 5 entries
 
-    try {
-    const bookings = await Booking.find();
-
-    res.status(200).json(bookings);
-    } catch (err) {
-    next(err);
-    }
+      res.status(200).json(bookings);
+  } catch (err) {
+      next(err);
+  }
 };
   
 export const getBookingsById = async(req,res,next) => {
