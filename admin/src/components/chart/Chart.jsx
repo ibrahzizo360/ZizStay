@@ -12,7 +12,6 @@ import { getPastWeekBookings } from "../../utils/booking";
 
 const Chart = ({ aspect, title }) => {
   const [data, setData] = useState([]);
-  const token = localStorage.getItem("token");
 
   const getDayName = (dayOfWeek) => {
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -23,7 +22,7 @@ const Chart = ({ aspect, title }) => {
   const today = toDate.getDay()+1;
 
   const fetchData = () => {
-    getPastWeekBookings(token)
+    getPastWeekBookings()
       .then(data => {
         const totalsByDay = {
           1: 0, // Sunday

@@ -4,12 +4,12 @@ import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import NewUser from "./pages/new/NewUser";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { userInputs } from "./formSource";
+import { userInputs } from "./data/formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContext";
-import { hotelColumns, roomColumns, userColumns } from "./datatablesource";
+import { hotelColumns, roomColumns, userColumns } from "./data/datatablesource";
 import NewHotel from "./pages/newHotel/NewHotel";
 import NewRoom from "./pages/newRoom/NewRoom";
 

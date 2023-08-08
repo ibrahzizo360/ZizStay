@@ -1,7 +1,9 @@
 import Axios from "./Axios";
 import { toast } from "react-toastify"
 
-export const addRoom = async (info ,token, hotelId) => {
+const token = localStorage.getItem("token");
+
+export const addRoom = async (info , hotelId) => {
     try {
         await Axios({
             url: `rooms/${hotelId}`,
@@ -16,5 +18,18 @@ export const addRoom = async (info ,token, hotelId) => {
                 toastId: "addRoom",
             }
         );
+    }
+}
+
+export const getRoomsCount = async () => {
+    try {
+        const {data} = await Axios({
+            url: 'rooms',
+            method: "GET",
+            headers: {Authorization: `Bearer ${token}`}
+        });
+        return data.count
+    } catch (e) {
+        console.log(e)
     }
 }

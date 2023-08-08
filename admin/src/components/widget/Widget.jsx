@@ -4,18 +4,18 @@ import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
-import useUsersCount from "../../hooks/useUsersCount";
-import useHotelsCount from "../../hooks/useHotelsCount";
-import useRoomsCount from "../../hooks/useRoomsCount";
-import useTotalRevenue from "../../hooks/useTotalRevenue";
+import { getUsersCount } from "../../utils/user";
+import { getHotelsCount } from "../../utils/hotel";
+import { getRoomsCount } from "../../utils/room";
+import { getTotalRevenue } from "../../utils/booking";
+
 
 const Widget = ({ type }) => {
   let dataInfo;
-  const token = localStorage.getItem('token')
-  const {usersCount} = useUsersCount('users/count',token);
-  const {hotelsCount} = useHotelsCount('hotels/count',token);
-  const {roomsCount} = useRoomsCount('rooms/count',token);
-  const {totalRevenue} = useTotalRevenue('bookings/get/total-revenue', token)
+  const usersCount =  getUsersCount();
+  const hotelsCount =  getHotelsCount();
+  const roomsCount = getRoomsCount();
+  const totalRevenue = getTotalRevenue();
 
 
   switch (type) {

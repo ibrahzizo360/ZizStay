@@ -2,7 +2,7 @@ import "./newRoom.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import { useEffect, useState } from "react";
-import { roomInputs } from "../../formSource";
+import { roomInputs } from "../../data/formSource";
 import useFetch from "../../hooks/useFetch";
 import { addRoom } from "../../utils/room";
 import { toast } from "react-toastify";

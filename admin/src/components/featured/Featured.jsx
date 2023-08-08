@@ -4,13 +4,24 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
-import useTodayRevenue from '../../hooks/useTodayRevenue';
+import { getTodayRevenue } from "../../utils/booking";
+import { useEffect, useState } from "react";
+
 
 const Featured = () => {
-  const token = localStorage.getItem("token")
-  const {todayRevenue} = useTodayRevenue(token);
+  const [todayRevenue, setTodayRevenue] = useState(null);
+
+  useEffect(() => {
+    getTodayRevenue()
+      .then(amount => setTodayRevenue(amount))
+      .catch(error => console.error('Error fetching revenue:', error));
+  }, []);
+
+  // Wait for todayRevenue to be set before rendering
+  if (todayRevenue === null) {
+    return <p>Loading...</p>;
+  }
   
-  console.log(todayRevenue);
   return (
     <div className="featured">
       <div className="top">
