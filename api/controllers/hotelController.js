@@ -102,7 +102,7 @@ export const countByCity = async (req, res, next) => {
     }
   };
 
-  export const getHotelsCount = async (req, res, next) => {
+export const getHotelsCount = async (req, res, next) => {
     try{
         const count = await Hotel.countDocuments()
         res.status(200).json({"count": count})
@@ -110,3 +110,28 @@ export const countByCity = async (req, res, next) => {
         next(err)
     }
 }  
+
+export const getHotelCities = async (req, res, next) => {
+  try {
+    const { searchCity } = req.query;
+
+    let query = {};
+
+    if (searchCity) {
+      query = {
+        city: { $regex: new RegExp(searchCity, 'i') } // Case-insensitive search
+      };
+    }
+
+    const distinctCities = await Hotel.distinct('city', query);
+
+    res.json({ hotelCities: distinctCities });
+  } catch (err) {
+    next(err);
+  }
+};
+
+
+
+
+

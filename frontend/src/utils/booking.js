@@ -1,7 +1,9 @@
 import Axios from "./Axios";
-import { toast } from "react-toastify"
+import { toast } from "react-toastify";
 
-export const addBooking = async (userId , info, token) => {
+const token = localStorage.getItem("token");
+
+export const addBooking = async (userId , info) => {
     try {
         await Axios({
             url: `bookings/${userId}`,

@@ -1,5 +1,5 @@
 import express from 'express';
-import  {addHotel, getAllHotels, deleteHotel, getHotelById ,updateHotel, countByCity, countByType, getHotelRooms, getHotelsCount}  from '../controllers/hotelController.js';
+import  {addHotel, getAllHotels, deleteHotel, getHotelById ,updateHotel, countByCity, countByType, getHotelRooms, getHotelsCount, getHotelCities}  from '../controllers/hotelController.js';
 import { verifyAdmin, authenticateUser} from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
@@ -15,6 +15,9 @@ router.delete("/:id", authenticateUser, verifyAdmin, deleteHotel);
 
 //GET
 router.get("/find/:id", getHotelById);
+
+router.get("/get/hotel-cities",authenticateUser, verifyAdmin, getHotelCities);
+
 
 //GET ALL
 router.get("/", getAllHotels);

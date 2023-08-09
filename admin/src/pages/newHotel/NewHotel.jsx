@@ -12,8 +12,6 @@ const NewHotel = () => {
   const [files, setFiles] = useState("");
   const [info, setInfo] = useState({});
   const [loading, setLoading] = useState(false);
-  
-  const token = localStorage.getItem("token")
 
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -48,7 +46,7 @@ const NewHotel = () => {
             photos: list,
           };
   
-          await addHotel(newhotel, token);
+          await addHotel(newhotel);
         })(),
         {
           pending: "Adding hotel...",
