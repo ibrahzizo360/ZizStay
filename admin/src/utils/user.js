@@ -6,7 +6,7 @@ const token = localStorage.getItem("token");
 export const getUsersCount = async () => {
     try {
         const {data} = await Axios({
-            url: 'users',
+            url: 'users/count',
             method: "GET",
             headers: {Authorization: `Bearer ${token}`}
         });

@@ -4,18 +4,13 @@ import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
-import { getUsersCount } from "../../utils/user";
-import { getHotelsCount } from "../../utils/hotel";
-import { getRoomsCount } from "../../utils/room";
-import { getTotalRevenue } from "../../utils/booking";
+import { useWidgetContext } from "../../context/WidgetContext";
+
 
 
 const Widget = ({ type }) => {
   let dataInfo;
-  const usersCount =  getUsersCount();
-  const hotelsCount =  getHotelsCount();
-  const roomsCount = getRoomsCount();
-  const totalRevenue = getTotalRevenue();
+  const { usersCount, hotelsCount, roomsCount, totalRevenue } = useWidgetContext();
 
 
   switch (type) {

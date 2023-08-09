@@ -17,10 +17,6 @@ const Featured = () => {
       .catch(error => console.error('Error fetching revenue:', error));
   }, []);
 
-  // Wait for todayRevenue to be set before rendering
-  if (todayRevenue === null) {
-    return <p>Loading...</p>;
-  }
   
   return (
     <div className="featured">

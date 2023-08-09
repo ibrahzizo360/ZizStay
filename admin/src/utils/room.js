@@ -24,7 +24,7 @@ export const addRoom = async (info , hotelId) => {
 export const getRoomsCount = async () => {
     try {
         const {data} = await Axios({
-            url: 'rooms',
+            url: 'rooms/count',
             method: "GET",
             headers: {Authorization: `Bearer ${token}`}
         });
