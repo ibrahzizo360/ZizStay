@@ -6,6 +6,7 @@ import authRoutes from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import roomRoutes from './routes/roomRoutes.js';
 import bookingRoutes from './routes/bookingRoutes.js';
+import notificationRoutes from './routes/notificationRoutes.js';
 import cookieParser from 'cookie-parser';
 import cors from "cors";
 
@@ -38,6 +39,7 @@ app.use('/api/auth', authRoutes)
 app.use('/api/users', userRoutes)
 app.use("/api/rooms", roomRoutes);
 app.use("/api/bookings", bookingRoutes);
+app.use('/api/notifications', notificationRoutes)
 
 
 app.use((err, req, res, next) => {

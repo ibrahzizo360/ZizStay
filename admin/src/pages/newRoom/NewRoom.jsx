@@ -36,7 +36,7 @@ const NewRoom = () => {
       setLoading(true);
       await toast.promise(
         (async () => {
-          await addRoom({ ...info, roomNumbers }, token, hotelId);
+          await addRoom({ ...info, roomNumbers }, hotelId);
         })(),
         {
           pending: "Adding room...",

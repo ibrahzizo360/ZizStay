@@ -57,7 +57,7 @@ export const getPastWeekBookings = async(req,res,next) => {
   try {
     const today = new Date();
     const lastWeek = new Date(today);
-    lastWeek.setDate(lastWeek.getDate() - 7); // Subtract 7 days
+    lastWeek.setDate(lastWeek.getDate() - 6); // Subtract 7 days
 
     const bookings = await Booking.aggregate([
       {

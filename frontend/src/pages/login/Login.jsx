@@ -1,16 +1,17 @@
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
+import { toast } from "react-toastify"
+import { signin } from "../../utils/auth";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
     username: undefined,
     password: undefined,
   });
-
-  const { loading, error, dispatch } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
+  const [redirect, setRedirect] = useState(false);
 
   const navigate = useNavigate()
 
@@ -20,15 +21,31 @@ const Login = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    dispatch({ type: "LOGIN_START" });
-    try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", credentials);
-      dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
-      navigate("/")
-    } catch (err) {
-      dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
-    }
+    if (!credentials.username | !credentials.password)
+      return toast.error("All fields are required", {
+        toastId: "signinToast",
+      });
+    setLoading(true);
+    toast.promise(
+      signin(credentials, () => {
+        setRedirect(true);
+        toast.success("Signin successful", { toastId: "signinToast" });
+      }),
+      {
+        pending: "Signing in...",
+        success: "Signin successful"
+      },
+      {
+        toastId: "signinToast",
+        position: "top-center",
+      }
+    );
+    setLoading(false);
   };
+
+  if(redirect){
+    navigate('/')
+  }
 
 
   return (
@@ -51,7 +68,6 @@ const Login = () => {
         <button disabled={loading} onClick={handleClick} className="lButton">
           Login
         </button>
-        {error && <span>{error.message}</span>}
       </div>
     </div>
   );

@@ -4,12 +4,10 @@ import "./reserve.css";
 import useFetch from "../../hooks/useFetch";
 import { useContext, useState } from "react";
 import { SearchContext } from "../../context/SearchContext";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { addBooking } from "../../utils/booking";
 import { updateRoomAvailability } from "../../utils/room";
 import { toast } from "react-toastify";
-import { AuthContext } from "../../context/AuthContext";
 
 const Reserve = ({ setOpen, hotelId, amount }) => {
   const [selectedRooms, setSelectedRooms] = useState([]);
@@ -17,7 +15,7 @@ const Reserve = ({ setOpen, hotelId, amount }) => {
   const { dates } = useContext(SearchContext);
   const [loading, setLoading] = useState(false);
   const token = localStorage.getItem("token");
-  const { user } = useContext(AuthContext);
+  const user = JSON.parse(localStorage.getItem('user'));
   const userId = user._id;
   
 
@@ -56,7 +54,6 @@ const Reserve = ({ setOpen, hotelId, amount }) => {
         : selectedRooms.filter((item) => item !== value)
     );
   };  
-  console.log(data)
 
   const navigate = useNavigate();
 
@@ -79,7 +76,7 @@ const Reserve = ({ setOpen, hotelId, amount }) => {
             amount,
           }
 
-          await addBooking(userId, newBooking, token);
+          await addBooking(userId, newBooking);
           setOpen(false);
           navigate("/");
         })(),
@@ -130,7 +127,7 @@ const Reserve = ({ setOpen, hotelId, amount }) => {
             </div>
           </div>
         ))}
-        <button onClick={handleClick} className="rButton">
+        <button onClick={handleClick} disabled={loading} className="rButton">
           Reserve Now!
         </button>
       </div>

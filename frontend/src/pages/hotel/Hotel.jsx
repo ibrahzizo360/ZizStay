@@ -14,7 +14,6 @@ import { useContext, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import { useLocation, useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
-import { AuthContext } from "../../context/AuthContext";
 import Reserve from "../../components/reserve/Reserve";
 
 const Hotel = () => {
@@ -25,7 +24,7 @@ const Hotel = () => {
   const [openModal, setOpenModal] = useState(false);
 
   const { data, loading, error } = useFetch(`http://localhost:5000/api/hotels/find/${id}`);
-  const { user } = useContext(AuthContext);
+  const user = JSON.parse(localStorage.getItem('user'));
   const navigate = useNavigate();
 
   const { dates, options } = useContext(SearchContext);
@@ -115,7 +114,7 @@ const Hotel = () => {
             </div>
           )}
           <div className="hotelWrapper">
-            <button className="bookNow">Reserve or Book Now!</button>
+            <button className="bookNow" onClick={handleClick}>Reserve or Book Now!</button>
             <h1 className="hotelTitle">{data.name}</h1>
             <div className="hotelAddress">
               <FontAwesomeIcon icon={faLocationDot} />

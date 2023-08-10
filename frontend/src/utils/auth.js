@@ -23,12 +23,12 @@ export const signup = async (info, callback) => {
 export const signin = async (credentials, callback) => {
     try {
         const { data } = await Axios({
-            url: "auth/signin",
+            url: "auth/login",
             method: "POST",
             data:credentials
         });
         localStorage.setItem("token", data.token)
-        localStorage.setItem("userInfo", JSON.stringify(data.user))
+        localStorage.setItem("user", JSON.stringify(data.details))
         callback(data.user);
     } catch (e) {
         toast.error(

@@ -1,21 +1,16 @@
-import './header.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faBed,
-  faCalendarDays,
-  faCar,
-  faPerson,
-  faPlane,
-  faTaxi,
-} from '@fortawesome/free-solid-svg-icons';
-import { DateRange } from 'react-date-range';
-import { useContext, useEffect, useState } from 'react';
-import 'react-date-range/dist/styles.css'; // main style file
-import 'react-date-range/dist/theme/default.css'; // theme css file
-import format from 'date-fns/format';
-import { useNavigate } from 'react-router-dom';
+// Header.js
+import React, { useState, useEffect, useContext } from 'react';
+import HeaderListItem from './HeaderListItem';
+import HeaderTitle from './HeaderTitle';
+import HeaderSearchInput from './HeaderSearchInput';
+import HeaderDateRange from './HeaderDateRange';
+import HeaderOptions from './HeaderOptions';
+import HeaderSearchButton from './HeaderSearchButton';
 import { SearchContext } from '../../context/SearchContext';
 import { getHotelCities } from '../../utils/hotel';
+import { useNavigate } from 'react-router-dom';
+import { faBed, faCar, faPlane, faTaxi } from '@fortawesome/free-solid-svg-icons';
+import './header.css'
 
 const Header = ({ type }) => {
   const [dates, setDates] = useState([
@@ -28,6 +23,7 @@ const Header = ({ type }) => {
   const [destination, setDestination] = useState('');
   const [openComponent, setOpenComponent] = useState(null);
   const [destinationOptions, setDestinationOptions] = useState([]);
+  const [showDestinationOptions, setShowDestinationOptions] = useState(false);
   const [options, setOptions] = useState({
     adult: 1,
     children: 0,
@@ -65,17 +61,18 @@ const Header = ({ type }) => {
   useEffect(() => {
     const fetchDestinationOptions = async () => {
       try {
-        const data = await getHotelCities(destination); // Await the result of the async function
+        const data = await getHotelCities(destination);
         setDestinationOptions(data.hotelCities);
+        console.log(data);
       } catch (error) {
         console.error('Error fetching destination options:', error);
       }
     };
 
-    if (destination && openComponent === 'destination') {
+    if (destination && showDestinationOptions) {
       fetchDestinationOptions();
     }
-  }, [destination, openComponent]);
+  }, [destination, showDestinationOptions]);
 
   useEffect(() => {
     document.addEventListener('click', handleClickOutside);
@@ -99,60 +96,30 @@ const Header = ({ type }) => {
   return (
     <>
       <div className="header">
-        <div
-          className={
-            type === 'list'
-              ? 'headerContainer listMode'
-              : 'headerContainer'
-          }
-        >
+        <div className={type === 'list' ? 'headerContainer listMode' : 'headerContainer'}>
           <div className="headerList">
-            <div className="headerListItem active">
-              <FontAwesomeIcon icon={faBed} />
-              <span>stays</span>
-            </div>
-            <div className="headerListItem">
-              <FontAwesomeIcon icon={faPlane} />
-              <span>Flights</span>
-            </div>
-            <div className="headerListItem">
-              <FontAwesomeIcon icon={faCar} />
-              <span>Car rentals</span>
-            </div>
-            <div className="headerListItem">
-              <FontAwesomeIcon icon={faBed} />
-              <span>Attractions</span>
-            </div>
-            <div className="headerListItem">
-              <FontAwesomeIcon icon={faTaxi} />
-              <span>Airport Taxis</span>
-            </div>
+            <HeaderListItem icon={faBed} text="stays" />
+            <HeaderListItem icon={faPlane} text="Flights" />
+            <HeaderListItem icon={faCar} text="Car rentals" />
+            <HeaderListItem icon={faBed} text="Attractions" />
+            <HeaderListItem icon={faTaxi} text="Airport Taxis" />
           </div>
           {type !== 'list' && (
             <>
-              <h1 className="headerTitle">
-                A lifetime of discount? It's genius
-              </h1>
-              <p className="headerDesc">
-                Search deals on hotels, homes, and much more...
-              </p>
+              <HeaderTitle
+                title="A lifetime of discount? It's genius"
+                description="Search deals on hotels, homes, and much more..."
+              />
               <div className="headerSearch">
-                <div className="headerSearchItem">
-                  <FontAwesomeIcon
-                    icon={faBed}
-                    className="headerIcon"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Where are you going?"
-                    className="headerSearchInput"
-                    value={destination}
-                    onChange={(e) => {
-                      setDestination(e.target.value);
-                      toggleOpenComponent('destination');
-                    }}
-                  />
-                  {openComponent === 'destination' &&
+                <HeaderSearchInput
+                  value={destination}
+                  onChange={(e) => {
+                    setDestination(e.target.value);
+                    toggleOpenComponent('destination');
+                  }}
+                  onClick={() => setShowDestinationOptions(true)}
+                  options={
+                    openComponent === 'destination' &&
                     destinationOptions.length > 0 && (
                       <div className="destinationOptionsModal">
                         {destinationOptions.map((option) => (
@@ -161,145 +128,29 @@ const Header = ({ type }) => {
                             className="destinationOption"
                             onClick={() => {
                               setDestination(option);
-                              setOpenComponent(null);
+                              setShowDestinationOptions(false);
                             }}
                           >
                             {option}
                           </div>
                         ))}
                       </div>
-                    )}
-                </div>
-                <div className="headerSearchItem">
-                  <FontAwesomeIcon
-                    icon={faCalendarDays}
-                    className="headerIcon"
-                    onClick={() => toggleOpenComponent('date')}
-                  />
-                  <span
-                    className="headerSearchText"
-                    onClick={() => toggleOpenComponent('date')}
-                  >
-                    {`${format(
-                      dates[0].startDate,
-                      'MM/dd/yyyy'
-                    )} to ${format(
-                      dates[0].endDate,
-                      'MM/dd/yyyy'
-                    )} `}
-                  </span>
-                  {openComponent === 'date' && (
-                    <DateRange
-                      editableDateInputs={true}
-                      onChange={(item) =>
-                        setDates([item.selection])
-                      }
-                      moveRangeOnFirstSelection={false}
-                      ranges={dates}
-                      className="date"
-                    />
-                  )}
-                </div>
-                <div className="headerSearchItem">
-                  <FontAwesomeIcon
-                    icon={faPerson}
-                    className="headerIcon"
-                    onClick={() => toggleOpenComponent('options')}
-                  />
-                  <span
-                    className="headerSearchText"
-                    onClick={() => toggleOpenComponent('options')}
-                  >{`${options.adult} adult . ${options.children} children . ${options.rooms} rooms`}</span>
-                  {openComponent === 'options' && (
-                    <div className="options">
-                      <div className="optionItem">
-                        <span className="optionText">Adults</span>
-                        <div className="optionCounter">
-                          <button
-                            className="optionCounterBtn"
-                            disabled={options.adult <= 1}
-                            onClick={() =>
-                              handleOption('adult', 'd')
-                            }
-                          >
-                            -
-                          </button>
-                          <span className="optionCounterNumber">
-                            {options.adult}
-                          </span>
-                          <button
-                            className="optionCounterBtn"
-                            onClick={() =>
-                              handleOption('adult', 'i')
-                            }
-                          >
-                            +
-                          </button>
-                        </div>
-                      </div>
-                      <div className="optionItem">
-                        <span className="optionText">
-                          Children
-                        </span>
-                        <div className="optionCounter">
-                          <button
-                            className="optionCounterBtn"
-                            disabled={options.children <= 0}
-                            onClick={() =>
-                              handleOption('children', 'd')
-                            }
-                          >
-                            -
-                          </button>
-                          <span className="optionCounterNumber">
-                            {options.children}
-                          </span>
-                          <button
-                            className="optionCounterBtn"
-                            onClick={() =>
-                              handleOption('children', 'i')
-                            }
-                          >
-                            +
-                          </button>
-                        </div>
-                      </div>
-                      <div className="optionItem">
-                        <span className="optionText">Rooms</span>
-                        <div className="optionCounter">
-                          <button
-                            className="optionCounterBtn"
-                            disabled={options.rooms <= 1}
-                            onClick={() =>
-                              handleOption('rooms', 'd')
-                            }
-                          >
-                            -
-                          </button>
-                          <span className="optionCounterNumber">
-                            {options.rooms}
-                          </span>
-                          <button
-                            className="optionCounterBtn"
-                            onClick={() =>
-                              handleOption('rooms', 'i')
-                            }
-                          >
-                            +
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-                <div className="headerSearchItem">
-                  <button
-                    className="headerBtn"
-                    onClick={handleSearch}
-                  >
-                    Search
-                  </button>
-                </div>
+                    )
+                  }
+                />
+                <HeaderDateRange
+                  dates={dates}
+                  onChange={setDates}
+                  toggleOpenComponent={toggleOpenComponent}
+                  isOpen={openComponent === 'date'}
+                />
+                <HeaderOptions
+                  options={options}
+                  handleOption={handleOption}
+                  toggleOpenComponent={toggleOpenComponent}
+                  isOpen={openComponent === 'options'}
+                />
+                <HeaderSearchButton onClick={handleSearch} />
               </div>
             </>
           )}
