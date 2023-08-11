@@ -1,5 +1,4 @@
 import Notification from '../models/notification.js';
-import { createError } from '../middlewares/errorMiddleware.js';
 
 export const createNotification = async (req, res, next) => {
     

@@ -8,13 +8,13 @@ import { useNavigate } from "react-router-dom";
 import { addBooking } from "../../utils/booking";
 import { updateRoomAvailability } from "../../utils/room";
 import { toast } from "react-toastify";
+import { sendNotification } from "../../utils/notification";
 
 const Reserve = ({ setOpen, hotelId, amount }) => {
   const [selectedRooms, setSelectedRooms] = useState([]);
   const { data, error } = useFetch(`http://localhost:5000/api/hotels/rooms/${hotelId}`);
   const { dates } = useContext(SearchContext);
   const [loading, setLoading] = useState(false);
-  const token = localStorage.getItem("token");
   const user = JSON.parse(localStorage.getItem('user'));
   const userId = user._id;
   
@@ -38,12 +38,21 @@ const Reserve = ({ setOpen, hotelId, amount }) => {
   const alldates = getDatesInRange(dates[0].startDate, dates[0].endDate);
 
   const isAvailable = (roomNumber) => {
-    const isFound = roomNumber.unavailableDates.some((date) =>
-      alldates.includes(new Date(date).getTime())
+    const unavailableTimestamps = roomNumber.unavailableDates.map((date) =>
+    new Date(date).getTime()
+    );
+
+    const selectedCheckInTimestamp = new Date(dates[0].startDate).getTime();
+    const selectedCheckOutTimestamp = new Date(dates[0].endDate).getTime();
+
+    const isFound = unavailableTimestamps.some((timestamp) =>
+      timestamp >= selectedCheckInTimestamp && timestamp <= selectedCheckOutTimestamp
     );
 
     return !isFound;
   };
+  
+  
 
   const handleSelect = (e) => {
     const checked = e.target.checked;
@@ -64,7 +73,7 @@ const Reserve = ({ setOpen, hotelId, amount }) => {
         (async () => {
           await Promise.all(
             selectedRooms.map((roomId) => {
-              const res = updateRoomAvailability(roomId,dates,token);
+              const res = updateRoomAvailability(roomId,{dates: alldates});
               return res.data
             })
           );
@@ -76,9 +85,19 @@ const Reserve = ({ setOpen, hotelId, amount }) => {
             amount,
           }
 
-          await addBooking(userId, newBooking);
-          setOpen(false);
-          navigate("/");
+          const notification = {
+            title: "New Booking",
+            message: `You have a new booking from ${user.username}`
+          }
+
+          try {
+            await sendNotification(notification);
+            await addBooking(userId, newBooking);
+            setOpen(false);
+            navigate("/");
+          } catch (error) {
+            throw error;
+          }
         })(),
         {
           pending: "Booking rooms...",

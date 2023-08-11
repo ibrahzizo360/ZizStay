@@ -14,12 +14,8 @@ const Navbar = () => {
   const { dispatch } = useContext(DarkModeContext);
 
 
-  const [notifications, setNotifications] = useState([
-    { id: 1, text: "New notification 1" },
-    { id: 2, text: "New notification 2" },
-  ]);
+  const [notifications, setNotifications] = useState([]);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
-  console.log(notifications)
 
   useEffect(() => {
     fetchNotifications();
@@ -65,7 +61,7 @@ const Navbar = () => {
             <div className={`notifications-dropdown ${isNotificationsOpen ? 'active' : ''}`}>
               {notifications.map((notification) => (
                 <div key={notification._id} className="notification">
-                  {notification.title}
+                  {notification.message}
                 </div>
               ))}
             </div>
