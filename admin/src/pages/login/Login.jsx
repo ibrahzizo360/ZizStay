@@ -1,8 +1,7 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./login.scss";
-import { toast } from "react-toastify"
+import { toast } from "react-toastify";
 import { signin } from "../../utils/auth";
 
 const Login = () => {
@@ -13,7 +12,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [redirect, setRedirect] = useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -21,32 +20,39 @@ const Login = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    if (!credentials.username | !credentials.password)
-      return toast.error("All fields are required", {
+    if (!credentials.username || !credentials.password) {
+      toast.error("All fields are required", {
         toastId: "signinToast",
       });
+      return;
+    }
     setLoading(true);
-    toast.promise(
-      signin(credentials, () => {
-        setRedirect(true);
-        toast.success("Signin successful", { toastId: "signinToast" });
-      }),
-      {
-        pending: "Signing in...",
-        success: "Signin successful"
-      },
-      {
-        toastId: "signinToast",
-        position: "top-center",
-      }
-    );
+
+    try {
+      await toast.promise(
+        signin(credentials, () => {
+          setRedirect(true);
+          navigate("/");
+        }),
+        {
+          pending: "Signing in...",
+          error: "Signin failed",
+        },
+        {
+          toastId: "signinToast",
+          position: "top-center",
+        }
+      );
+    } catch (error) {
+      console.error("Signin error:", error);
+    }
+
     setLoading(false);
   };
 
-  if(redirect){
-    navigate('/')
+  if (redirect) {
+    navigate("/");
   }
-
 
   return (
     <div className="login">
