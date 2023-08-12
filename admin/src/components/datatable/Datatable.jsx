@@ -1,6 +1,5 @@
 import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns, userRows } from "../../data/datatablesource";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import useFetch from "../../hooks/useFetch";
@@ -42,10 +41,17 @@ const Datatable = ({columns}) => {
       headerName: "Action",
       width: 200,
       renderCell: (params) => {
+        const isDisabled = path === "hotels" || path === "rooms";
+  
         return (
           <div className="cellAction">
-            <Link to={`/${path}/${params.row._id}`} style={{ textDecoration: "none" }}>
-              <button className="viewButton"  >View</button>
+            <Link
+              to={`/${path}/${params.row._id}`}
+              style={{ textDecoration: "none" }}
+            >
+              <button className="viewButton" disabled={isDisabled}>
+                View
+              </button>
             </Link>
             <div
               className="deleteButton"
@@ -58,6 +64,7 @@ const Datatable = ({columns}) => {
       },
     },
   ];
+  
   return (
     <div className="datatable">
       <div className="datatableTitle">
