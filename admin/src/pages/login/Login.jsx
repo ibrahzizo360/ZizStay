@@ -32,7 +32,7 @@ const Login = () => {
         dispatch({ type: "LOGIN_FAILURE", payload: {message: "you are not allowed"} });
       }
     } catch (err) {
-      dispatch({ type: "LOGIN_FAILURE", payload: err.response });
+      dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
     }
   };
 
