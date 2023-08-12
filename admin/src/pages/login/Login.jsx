@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./login.scss";
 import { toast } from "react-toastify";
@@ -6,13 +6,20 @@ import { signin } from "../../utils/auth";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
-    username: undefined,
-    password: undefined,
+    username: "",
+    password: "",
   });
   const [loading, setLoading] = useState(false);
-  const [redirect, setRedirect] = useState(false);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if the user is already logged in
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/");
+    }
+  }, [navigate]);
 
   const handleChange = (e) => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -31,8 +38,8 @@ const Login = () => {
     try {
       await toast.promise(
         signin(credentials, () => {
-          setRedirect(true);
-          navigate("/");
+          // On successful sign-in, reload the page
+          window.location.reload();
         }),
         {
           pending: "Signing in...",
@@ -49,10 +56,6 @@ const Login = () => {
 
     setLoading(false);
   };
-
-  if (redirect) {
-    navigate("/");
-  }
 
   return (
     <div className="login">

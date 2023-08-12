@@ -30,14 +30,33 @@ export const WidgetProvider = ({ children }) => {
     totalRevenue: null,
   };
 
+  
+
   const [state, dispatch] = useReducer(widgetReducer, initialState);
 
-  useEffect(() => {
-    getUsersCount().then(count => dispatch({ type: 'SET_USERS_COUNT', payload: count }));
-    getHotelsCount().then(count => dispatch({ type: 'SET_HOTELS_COUNT', payload: count }));
-    getRoomsCount().then(count => dispatch({ type: 'SET_ROOMS_COUNT', payload: count }));
-    getTotalRevenue().then(revenue => dispatch({ type: 'SET_TOTAL_REVENUE', payload: revenue }));
-  }, []);
+
+useEffect(() => {
+  getUsersCount()
+    .then((count) => {
+      dispatch({ type: 'SET_USERS_COUNT', payload: count });
+      return getHotelsCount();
+    })
+    .then((count) => {
+      dispatch({ type: 'SET_HOTELS_COUNT', payload: count });
+      return getRoomsCount();
+    })
+    .then((count) => {
+      dispatch({ type: 'SET_ROOMS_COUNT', payload: count });
+      return getTotalRevenue();
+    })
+    .then((revenue) => {
+      dispatch({ type: 'SET_TOTAL_REVENUE', payload: revenue });
+    })
+    .catch((error) => {
+      console.error('Error fetching widget data:', error);
+    });
+}, []);
+
 
   return (
     <WidgetContext.Provider value={state}>

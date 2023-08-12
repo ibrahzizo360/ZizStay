@@ -69,7 +69,7 @@ const Widget = ({ type }) => {
       dataInfo = {
         title: "EARNINGS",
         isMoney: true,
-        amount: totalRevenue,
+        amount: totalRevenue? totalRevenue: "N/A",
         link: "View net earnings",
         icon: (
           <MonetizationOnOutlinedIcon
