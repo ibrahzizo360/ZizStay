@@ -1,16 +1,17 @@
-import axios from "axios";
-import { useContext, useState } from "react";
+
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
 import "./login.scss";
+import { toast } from "react-toastify"
+import { signin } from "../../utils/auth";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
     username: undefined,
     password: undefined,
   });
-
-  const { loading, error, dispatch } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
+  const [redirect, setRedirect] = useState(false);
 
   const navigate = useNavigate()
 
@@ -20,21 +21,31 @@ const Login = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    dispatch({ type: "LOGIN_START" });
-    try {
-      const res = await axios.post("https://zizstay-server.onrender.com/api/auth/login", credentials);
-      if(res.data.isAdmin){
-        dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
-        localStorage.setItem("token", res.data.token);
-        navigate("/")
+    if (!credentials.username | !credentials.password)
+      return toast.error("All fields are required", {
+        toastId: "signinToast",
+      });
+    setLoading(true);
+    toast.promise(
+      signin(credentials, () => {
+        setRedirect(true);
+        toast.success("Signin successful", { toastId: "signinToast" });
+      }),
+      {
+        pending: "Signing in...",
+        success: "Signin successful"
+      },
+      {
+        toastId: "signinToast",
+        position: "top-center",
       }
-      else{
-        dispatch({ type: "LOGIN_FAILURE", payload: {message: "you are not allowed"} });
-      }
-    } catch (err) {
-      dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
-    }
+    );
+    setLoading(false);
   };
+
+  if(redirect){
+    navigate('/')
+  }
 
 
   return (
@@ -57,7 +68,6 @@ const Login = () => {
         <button disabled={loading} onClick={handleClick} className="lButton">
           Login
         </button>
-        {error && <span>{error.message}</span>}
       </div>
     </div>
   );
