@@ -10,7 +10,7 @@ const Single = () => {
   const token = localStorage.getItem("token");
   const location = useLocation();
   const userId = location.pathname.split('/')[2];
-  const {data, loading, error} = useFetch(`http://localhost:5000/api/users/${userId}`, token);
+  const {data, loading, error} = useFetch(`https://zizstay-server.onrender.com/api/users/${userId}`, token);
 
   return (
     <div className="single">

@@ -22,7 +22,7 @@ const Login = () => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", credentials);
+      const res = await axios.post("https://zizstay-server.onrender.com/api/auth/login", credentials);
       if(res.data.isAdmin){
         dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
         localStorage.setItem("token", res.data.token);

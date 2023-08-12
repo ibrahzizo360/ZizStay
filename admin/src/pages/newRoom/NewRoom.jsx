@@ -15,7 +15,7 @@ const NewRoom = () => {
   const [loading, setLoading] = useState(false);
 
   const token = localStorage.getItem("token");
-  const { data, error } = useFetch("http://localhost:5000/api/hotels", token);
+  const { data, error } = useFetch("https://zizstay-server.onrender.com/api/hotels", token);
 
   if(error){toast.error("couldn't fetch hotels")}
 

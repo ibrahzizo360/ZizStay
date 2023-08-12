@@ -12,7 +12,7 @@ import { sendNotification } from "../../utils/notification";
 
 const Reserve = ({ setOpen, hotelId, amount }) => {
   const [selectedRooms, setSelectedRooms] = useState([]);
-  const { data, error } = useFetch(`http://localhost:5000/api/hotels/rooms/${hotelId}`);
+  const { data, error } = useFetch(`https://zizstay-server.onrender.com/api/hotels/rooms/${hotelId}`);
   const { dates } = useContext(SearchContext);
   const [loading, setLoading] = useState(false);
   const user = JSON.parse(localStorage.getItem('user'));

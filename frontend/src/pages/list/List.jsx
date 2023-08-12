@@ -19,7 +19,7 @@ const List = () => {
   const adjustedMin = min === max ? min - 1 : min;
 
   const { data, loading, error, reFetch } = useFetch(
-    `http://localhost:5000/api/hotels?city=${destination}&min=${adjustedMin || 0 }&max=${max || 999}`
+    `https://zizstay-server.onrender.com/api/hotels?city=${destination}&min=${adjustedMin || 0 }&max=${max || 999}`
   );
 
   const handleClick = () => {

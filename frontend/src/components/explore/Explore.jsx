@@ -6,7 +6,7 @@ import { SearchContext } from '../../context/SearchContext';
 
 const Explore = () => {
 
-  const {data,loading,error} = useFetch("http://localhost:5000/api/hotels/countByCity?cities=Accra,Kumasi,Cape Coast,Akosombo,Takoradi");
+  const {data,loading,error} = useFetch("https://zizstay-server.onrender.com/api/hotels/countByCity?cities=Accra,Kumasi,Cape Coast,Akosombo,Takoradi");
   const navigate = useNavigate();
 
   const [dates, setDates] = useState([{

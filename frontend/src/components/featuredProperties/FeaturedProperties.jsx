@@ -3,7 +3,7 @@ import useFetch from "../../hooks/useFetch";
 import "./featuredProperties.css";
 
 const FeaturedProperties = () => {
-  const { data, loading } = useFetch("http://localhost:5000/api/hotels?featured=true&limit=4");
+  const { data, loading } = useFetch("https://zizstay-server.onrender.com/api/hotels?featured=true&limit=4");
   const navigate = useNavigate();
 
   const getRatingText = (rating) => {

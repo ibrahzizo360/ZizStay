@@ -23,7 +23,7 @@ const Hotel = () => {
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
 
-  const { data, loading, error } = useFetch(`http://localhost:5000/api/hotels/find/${id}`);
+  const { data, loading, error } = useFetch(`https://zizstay-server.onrender.com/api/hotels/find/${id}`);
   const user = JSON.parse(localStorage.getItem('user'));
   const navigate = useNavigate();
 

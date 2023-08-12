@@ -31,7 +31,7 @@ const NewUser = ({ inputs }) => {
         img: url,
       };
 
-      await axios.post("http://localhost:5000/api/auth/register", newUser);
+      await axios.post("https://zizstay-server.onrender.com/api/auth/register", newUser);
     } catch (err) {
       console.log(err);
     }

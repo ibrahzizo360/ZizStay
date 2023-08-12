@@ -14,7 +14,7 @@ const Datatable = ({columns}) => {
   const location = useLocation();
   const path = location.pathname.split('/')[1];
   const [list, setList] = useState([]);
-  const {data, loading, error} = useFetch(`http://localhost:5000/api/${path}`);
+  const {data, loading, error} = useFetch(`https://zizstay-server.onrender.com/api/${path}`);
 
   useEffect(() => {
     setList(data)
@@ -26,7 +26,7 @@ const Datatable = ({columns}) => {
 
   const handleDelete = async (id) => {
     try{
-      await axios.delete(`http://localhost:5000/api/${path}/${id}`,  {
+      await axios.delete(`https://zizstay-server.onrender.com/api/${path}/${id}`,  {
         headers: {
           Authorization: `Bearer ${token}`, 
         },
@@ -41,7 +41,7 @@ const Datatable = ({columns}) => {
       headerName: "Action",
       width: 200,
       renderCell: (params) => {
-        const isDisabled = path === "hotels" || path === "rooms";
+        const isDisabled = path === "hotels" || path === "rooms"; 
   
         return (
           <div className="cellAction">
