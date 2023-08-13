@@ -24,6 +24,7 @@ const Header = ({ type }) => {
   const [openComponent, setOpenComponent] = useState(null);
   const [destinationOptions, setDestinationOptions] = useState([]);
   const [showDestinationOptions, setShowDestinationOptions] = useState(false);
+  const [updateFlag, setUpdateFlag] = useState(false);
   const [options, setOptions] = useState({
     adult: 1,
     children: 0,
@@ -32,10 +33,12 @@ const Header = ({ type }) => {
 
   const handleOption = (name, operation) => {
     setOptions((prev) => {
-      return {
+      const updatedOptions = {
         ...prev,
         [name]: operation === 'i' ? options[name] + 1 : options[name] - 1,
       };
+      setUpdateFlag(!updateFlag); // Toggle the flag to trigger re-render
+      return updatedOptions;
     });
   };
 
