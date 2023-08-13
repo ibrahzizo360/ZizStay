@@ -37,7 +37,7 @@ const Login = () => {
     try {
       await toast.promise(
         signin(credentials, () => {
-          toast.success("signin successful", {toastId: "successToast"});
+          toast.success("sign in successful");
           window.location.reload()
         }),
         {
