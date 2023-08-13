@@ -14,7 +14,6 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if the user is already logged in
     const token = localStorage.getItem("token");
     if (token) {
       navigate("/");
@@ -38,8 +37,8 @@ const Login = () => {
     try {
       await toast.promise(
         signin(credentials, () => {
-          // On successful sign-in, reload the page
-          window.location.reload();
+          toast.success("signin successful", {toastId: "successToast"});
+          window.location.reload()
         }),
         {
           pending: "Signing in...",
