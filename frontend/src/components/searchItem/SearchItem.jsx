@@ -1,10 +1,12 @@
 import "./searchItem.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 
 
 const SearchItem = ({ item }) => {
+  const navigate = useNavigate();
   return (
-    <div className="searchItem">
+    <div className="searchItem" onClick={(()=> {navigate(`/hotels/${item._id}`)})}>
       <img src={item.photos[0]} alt="" className="siImg" />
       <div className="siDesc">
         <h1 className="siTitle">{item.name}</h1>

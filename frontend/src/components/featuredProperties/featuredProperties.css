@@ -57,7 +57,7 @@
   }
   .fpItem{
     flex: none;
-    width: 25vw;
+    width: 35vw;
     flex-shrink: 0;
     height: 45vh;
   }
@@ -71,12 +71,12 @@
     overflow-x: scroll;
     margin: 0 auto;
   }
-  .fpItem{
+  /* .fpItem{
     flex: none;
     width: 25vw;
     flex-shrink: 0;
     height: 40vh;
-  }
+  } */
   .fpImg{
     height: 20vh;
   } 
@@ -86,12 +86,12 @@
     overflow-x: scroll;
     margin: 0 auto;
   }
-  .fpItem{
+  /* .fpItem{
     flex: none;
     width: 25vw;
     flex-shrink: 0;
     height: 40vh;
-  }
+  } */
   .fpImg{
     height: 15vh;
   } 
