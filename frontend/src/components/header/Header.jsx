@@ -47,23 +47,22 @@ const Header = ({ type }) => {
     }
   };
 
-  const handleClickOutside = (event) => {
-    if (
-      openComponent &&
-      !event.target.closest('.headerSearchItem') &&
-      !event.target.closest('.date') &&
-      !event.target.closest('.options')
-    ) {
-      setOpenComponent(null);
-    }
-  };
+  // const handleClickOutside = (event) => {
+  //   if (
+  //     openComponent &&
+  //     !event.target.closest('.headerSearchItem') &&
+  //     !event.target.closest('.date') &&
+  //     !event.target.closest('.options')
+  //   ) {
+  //     setOpenComponent(null);
+  //   }
+  // };
 
   useEffect(() => {
     const fetchDestinationOptions = async () => {
       try {
         const data = await getHotelCities(destination);
         setDestinationOptions(data.hotelCities);
-        console.log(data);
       } catch (error) {
         console.error('Error fetching destination options:', error);
       }
@@ -74,12 +73,12 @@ const Header = ({ type }) => {
     }
   }, [destination, showDestinationOptions]);
 
-  useEffect(() => {
-    document.addEventListener('click', handleClickOutside);
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, [openComponent]);
+  // useEffect(() => {
+  //   document.addEventListener('click', handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener('click', handleClickOutside);
+  //   };
+  // }, [openComponent]);
 
   const { dispatch } = useContext(SearchContext);
 
