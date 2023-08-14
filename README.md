@@ -6,10 +6,9 @@ Welcome to Zizstay, your go-to hotel reservation system. Zizstay allows users to
 
 Zizstay has been built using a mix of technologies to ensure a seamless user experience. The technologies utilized include:
 
-- HTML: For structuring the content of web pages.
+- React: A JavaScript library used for building user interfaces.
 - CSS & SCSS: For styling the user interface and ensuring an appealing design.
 - JavaScript: For dynamic interactions and enhancing user interactivity.
-- React: A JavaScript library used for building user interfaces.
 - Node.js: A runtime environment for server-side JavaScript.
   
 ## Components
