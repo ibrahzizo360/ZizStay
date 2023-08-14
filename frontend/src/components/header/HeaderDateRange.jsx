@@ -25,7 +25,7 @@ const HeaderDateRange = ({ dates, onChange, toggleOpenComponent, isOpen }) => {
         <DateRange
           editableDateInputs={true}
           onChange={(item) => {
-            toggleOpenComponent('date'); // Close the date range when a selection is made
+            // toggleOpenComponent('date'); // Close the date range when a selection is made
             onChange([item.selection]);
           }}
           moveRangeOnFirstSelection={false}

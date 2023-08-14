@@ -47,16 +47,16 @@ const Header = ({ type }) => {
     }
   };
 
-  // const handleClickOutside = (event) => {
-  //   if (
-  //     openComponent &&
-  //     !event.target.closest('.headerSearchItem') &&
-  //     !event.target.closest('.date') &&
-  //     !event.target.closest('.options')
-  //   ) {
-  //     setOpenComponent(null);
-  //   }
-  // };
+  const handleClickOutside = (event) => {
+    if (
+      openComponent &&
+      !event.target.closest('.headerSearchItem') &&
+      !event.target.closest('.date') &&
+      !event.target.closest('.options')
+    ) {
+      setOpenComponent(null);
+    }
+  };
 
   useEffect(() => {
     const fetchDestinationOptions = async () => {
@@ -73,12 +73,12 @@ const Header = ({ type }) => {
     }
   }, [destination, showDestinationOptions]);
 
-  // useEffect(() => {
-  //   document.addEventListener('click', handleClickOutside);
-  //   return () => {
-  //     document.removeEventListener('click', handleClickOutside);
-  //   };
-  // }, [openComponent]);
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [openComponent]);
 
   const { dispatch } = useContext(SearchContext);
 
