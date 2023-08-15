@@ -29,7 +29,11 @@ To refine their search, users have the ability to filter hotels based on price r
 For in-depth instructions on utilizing the Frontend features and making hotel reservations, please refer to the [Frontend Documentation](./frontend/README.md).
 
 ## Contribution
+Contributions are not only welcomed but encouraged as well. We believe in the power of collaboration and innovation. If you're passionate about improving the Zizstay experience, your insights and expertise are invaluable.
 
+Whether you're a seasoned developer or just getting started, your contributions can make a real difference. From enhancing existing features to suggesting new ideas, every effort counts.
+
+Feel free to explore our project, identify areas where you can add value, and submit your contributions. 
 
 ---
 
