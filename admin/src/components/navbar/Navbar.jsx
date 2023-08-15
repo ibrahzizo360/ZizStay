@@ -30,6 +30,17 @@ const Navbar = () => {
     }
   };
 
+  const deleteNotification = async (notificationId) => {
+    try {
+      await Axios.delete(`notifications/${notificationId}`);
+      setNotifications((prevNotifications) =>
+        prevNotifications.filter((notification) => notification._id !== notificationId)
+      );
+    } catch (error) {
+      console.error('Error deleting notification', error);
+    }
+  };
+
   const toggleNotifications = () => {
     setIsNotificationsOpen(!isNotificationsOpen);
   };
@@ -61,6 +72,7 @@ const Navbar = () => {
             <div className={`notifications-dropdown ${isNotificationsOpen ? 'active' : ''}`}>
               {notifications.map((notification) => (
                 <div key={notification._id} className="notification">
+                  <span className="close-icon" onClick={() => deleteNotification(notification._id)}>X</span>
                   {notification.message}
                 </div>
               ))}
