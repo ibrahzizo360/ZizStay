@@ -27,7 +27,7 @@ Use the new user details to log in to the client side.
 
 Let's begin! 🚀
 
-## Technologies Used
+## 🚀 Technologies Used
 
 Zizstay has been built using a mix of technologies to ensure a seamless user experience. The technologies utilized include:
 
@@ -58,7 +58,7 @@ The API, developed using Node.js, serves as the backbone of Zizstay. It handles 
 
 [Learn more about the API](./api/README.md)
 
-## How to run
+## 🏁 How to run
 
 To set up and run Zizstay on your local machine, follow the instructions in the respective README files of each component.
 
