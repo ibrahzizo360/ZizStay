@@ -32,9 +32,21 @@ Manage users, rooms, and hotels efficiently through intuitive administrative con
 
 Benefit from dashboard widgets displaying counts of users, hotels, rooms, and total earnings, providing a comprehensive overview of vital metrics.
 
-## Getting Started
+## 🏁 How to run
 
-For detailed information on setting up and utilizing the Admin Panel features, please refer to the [Admin Panel Documentation](./admin/README.md).
+# Clone this project
+$ git clone https://github.com/ibrahzizo360/ZizStay
+
+# Access
+$ cd admin
+
+# Install dependencies
+$ yarn or npm install
+
+# Run the project
+$ yarn start or npm start
+
+# The server will initialize in the <http://localhost:3000>
 
 ## Contribution
 
