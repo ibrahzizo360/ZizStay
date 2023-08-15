@@ -2,7 +2,6 @@
 
 🌟Welcome to Zizstay, your go-to hotel reservation system. Zizstay allows users to conveniently book hotel rooms, manage reservations, and explore various lodging options. This repository contains different components that come together to make Zizstay a reality
 
-Of course, I can certainly be more straightforward. Here's a revised version that focuses on the essential steps:
 
 ## Getting Started
 
