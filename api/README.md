@@ -2,11 +2,11 @@
 
 Greetings,
 
-Welcome to the Zizstay API, the engine that powers seamless data flow and interaction within your hotel reservation system. This section directs you to the API documentation for a comprehensive understanding of its functionalities and capabilities.
+Welcome to the Zizstay API, the magic behind Zizstay's operations with our easy-to-understand API documentation. It's like a user manual that shows you how to make all the parts of Zizstay work together smoothly. Whether you're new to APIs or an experienced developer, our documentation will guide you through the process of using Zizstay's powers to create amazing hotel reservation experiences.
 
 ## Accessing API Documentation
 
-For in-depth information on how to interact with the Zizstay API, including endpoints, data structures, authentication methods, and more, please visit the [API Documentation](https://your-api-documentation-link-here).
+For in-depth information on how to interact with the Zizstay API, including endpoints, data structures, authentication methods, and more, please visit the [API Documentation](https://documenter.getpostman.com/view/27574556/2s9Xy6q9yS).
 
 ## Embracing the Power of APIs
 
