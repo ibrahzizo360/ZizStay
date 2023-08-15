@@ -50,7 +50,13 @@ $ yarn start or npm start
 ```
 ## Contribution
 
+Contributions are not only welcomed but encouraged as well. We believe in the power of collaboration and innovation. If you're passionate about improving the Zizstay experience, your insights and expertise are invaluable.
 
+Whether you're a seasoned developer or just getting started, your contributions can make a real difference. From enhancing existing features to suggesting new ideas, every effort counts.
+
+Feel free to explore our project, identify areas where you can add value, and submit your contributions.
+
+---
 
 Thank you for exploring the Zizstay Admin Panel. We trust that these features will assist you in efficiently managing your hotel operations and making well-informed decisions. Should you have any questions or require assistance, please don't hesitate to reach out.
 
