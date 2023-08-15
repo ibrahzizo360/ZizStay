@@ -1,6 +1,32 @@
 # Zizstay Hotel Reservation System
 
-🌟Welcome to Zizstay, your go-to hotel reservation system. Zizstay allows users to conveniently book hotel rooms, manage reservations, and explore various lodging options. This repository contains different components that come together to make Zizstay a reality.
+🌟Welcome to Zizstay, your go-to hotel reservation system. Zizstay allows users to conveniently book hotel rooms, manage reservations, and explore various lodging options. This repository contains different components that come together to make Zizstay a reality
+
+Of course, I can certainly be more straightforward. Here's a revised version that focuses on the essential steps:
+
+## Getting Started
+
+### 🔑 Admin Credentials
+
+Use these keys to start:
+
+- **Username:** admin
+- **Password:** 1234
+
+### Access the Admin Dashboard
+
+After logging in, you're in control. Create a new user in the users section.
+
+### Explore the Frontend
+
+Use the new user details to log in to the client side.
+
+### Live Demos
+
+- [Admin Panel Demo](https://zizstay-admin.onrender.com)
+- [Frontend Demo](https://zizstay-client.onrender.com)
+
+Let's begin! 🚀
 
 ## Technologies Used
 
@@ -33,7 +59,7 @@ The API, developed using Node.js, serves as the backbone of Zizstay. It handles 
 
 [Learn more about the API](./api/README.md)
 
-## Getting Started
+## How to run
 
 To set up and run Zizstay on your local machine, follow the instructions in the respective README files of each component.
 
