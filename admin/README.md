@@ -33,7 +33,7 @@ Manage users, rooms, and hotels efficiently through intuitive administrative con
 Benefit from dashboard widgets displaying counts of users, hotels, rooms, and total earnings, providing a comprehensive overview of vital metrics.
 
 ## 🏁 How to run
-
+```bash
 # Clone this project
 $ git clone https://github.com/ibrahzizo360/ZizStay
 
@@ -47,7 +47,7 @@ $ yarn or npm install
 $ yarn start or npm start
 
 # The server will initialize in the <http://localhost:3000>
-
+```
 ## Contribution
 
 
