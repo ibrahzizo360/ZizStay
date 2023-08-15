@@ -1,83 +1,56 @@
+# Zizstay Admin Panel
 
+Welcome to the Zizstay Admin Panel, a central hub designed to enhance your hotel management capabilities. This section provides an overview of the notable features and functionalities within the Admin Panel.
 
+## Features Overview
 
-<h1 align="center" font-weight="bold">Admin Dashboard</h1>
- <br>
+### Interactive Booking Insights
 
-<p align="center"><a  href = "https://admin-dashboard-mdo9.onrender.com" > LIVE DEMO HERE!<a/> </p>
-  
- <br>
+Explore a comprehensive chart that visually represents booking activity over the past week. This feature aids in understanding booking trends and making informed decisions.
 
-<p align="center">
-  <a href="#dart-about">About</a> &#xa0; | &#xa0; 
-  <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
-  <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
-  <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
-  <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
-  <a href="#memo-license">License</a> &#xa0; | &#xa0;
-  <a href="https://github.com/ibrahzizo360" target="_blank">Author</a>
-</p>
+### Real-Time Revenue Tracking
 
-<br>
+Witness real-time revenue generation with a dynamic progress bar. This element offers a concise snapshot of the day's total sales, providing valuable financial insights.
 
-## :dart: About ##
+### Light and Dark Mode
 
-This is a robust admin dashboard developed using React, engineered to optimize your administrative responsibilities and deliver effortless system control. With its contemporary and user-friendly interface, It offers an intuitive experience that empowers you to effortlessly handle your data and drive informed decision-making.
+Choose between Light Mode and Dark Mode to personalize your interface based on preference and lighting conditions.
 
-## Project Demonstration
+### Notification System
 
+Stay updated with notifications that inform you about reservations, updates, and critical activities, ensuring you're well-informed at all times.
 
+### User, Hotel, and Room Management
 
+Access dedicated sections for user profiles, hotel profiles, and room inventories. These pages provide data-rich insights and facilitate efficient management.
 
+### Administrative Control
 
-## :sparkles: Features ##
+Manage users, rooms, and hotels efficiently through intuitive administrative controls.
 
-:heavy_check_mark: Interactive Charts: Visualize your data with stunning charts and graphs. Gain valuable insights and track performance trends effortlessly.
+### Dashboard Widgets
 
-:heavy_check_mark: Progress Bar:  Stay informed about the progress of ongoing tasks with the progress bar feature. Track completion rates and monitor project milestones at a glance.
+Benefit from dashboard widgets displaying counts of users, hotels, rooms, and total earnings, providing a comprehensive overview of vital metrics.
 
-:heavy_check_mark: User-friendly Interface: The dashboard features an intuitive and user-friendly interface, making it easy for both experienced administrators and newcomers to navigate and manage the application efficiently.
+## Getting Started
 
-:heavy_check_mark: Dark and Light Mode: Personalize your dashboard experience with the choice of dark or light mode. Adapt the interface to your preference and reduce eye strain during extended usage
+For detailed information on setting up and utilizing the Admin Panel features, please refer to the [Admin Panel Documentation](./admin/README.md).
 
-## :rocket: Technologies ##
+## Contribution
 
-The following tools were used in this project:
+If you're interested in contributing to the Admin Panel's development, we encourage you to review our [Contribution Guidelines](../CONTRIBUTING.md) for guidance.
 
-- Sassy CSS(SCSS)
-- React
-- Javascript
+## Code of Conduct
 
+We adhere to a [Code of Conduct](../CODE_OF_CONDUCT.md) to ensure a respectful and collaborative environment for all participants.
 
-## :white_check_mark: Requirements ##
+## Licensing
 
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
+The Zizstay Admin Panel operates under the [MIT License](../LICENSE), inviting collaboration and utilization within the bounds of the license terms.
 
-## :checkered_flag: Starting ##
+---
 
-```bash
-# Clone this project
-$ git clone https://github.com/ibrahzizo360/React_Admin_Dashboard
+Thank you for exploring the Zizstay Admin Panel. We trust that these features will assist you in efficiently managing your hotel operations and making well-informed decisions. Should you have any questions or require assistance, please don't hesitate to reach out.
 
-# Access
-$ cd React_Admin_Dashboard
-
-# Install dependencies
-$ yarn or npm install
-
-# Run the project
-$ yarn start or npm run start
-
-
-```
-
-## :memo: License ##
-
-This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
-
-
-Made with :heart: by <a href="https://github.com/ibrahzizo360" target="_blank">Ibrahim Aziz</a>
-
-&#xa0;
-
-<a href="#top">Back to top</a>
+Best regards,
+The Zizstay Team

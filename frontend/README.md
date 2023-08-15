@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Zizstay Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Zizstay Frontend, the gateway to seamless hotel reservations. This section outlines the key features and functionalities of the Frontend component.
 
-## Available Scripts
+## Features Overview
 
-In the project directory, you can run:
+### Engaging Landing Page
 
-### `yarn start`
+The landing page presents an enticing experience, featuring a dynamic header, a user-friendly search bar, and captivating hotel images to capture user attention.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Comprehensive Search
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The header's search bar empowers users to tailor their hotel search. Users can input their desired destination, choose stay dates using a date range component, and specify the number of adults, children, and rooms for their reservation.
 
-### `yarn test`
+### Intuitive Date Range Selection
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The date range component simplifies the process of selecting the duration of stay. Users can effortlessly choose their check-in and check-out dates, ensuring accuracy in planning.
 
-### `yarn build`
+### Flexible Occupancy Options
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Users can easily define the number of adults, children, and rooms needed for their reservation, offering a personalized booking experience.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Price-Based Filtering
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To refine their search, users have the ability to filter hotels based on price ranges, allowing them to find options that fit within their budget.
 
-### `yarn eject`
+## Getting Started
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+For in-depth instructions on utilizing the Frontend features and making hotel reservations, please refer to the [Frontend Documentation](./frontend/README.md).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Contribution
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+We welcome contributions to enhance the Frontend experience. If you're interested, please review our [Contribution Guidelines](../CONTRIBUTING.md) for details.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Code of Conduct
 
-## Learn More
+Our community adheres to a [Code of Conduct](../CODE_OF_CONDUCT.md) that fosters a respectful and collaborative environment for all participants.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Licensing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The Zizstay Frontend operates under the [MIT License](../LICENSE), enabling collaboration and utilization under the specified license terms.
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Thank you for exploring the Zizstay Frontend. We trust that these features will provide users with a seamless and personalized hotel reservation process. If you have any inquiries or require assistance, please don't hesitate to reach out.
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Best regards,
+The Zizstay Team
