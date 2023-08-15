@@ -8,6 +8,6 @@ router.post("/", createNotification)
 
 router.get("/", getNotifications)
 
-router.get('/:id', deleteNotification)
+router.delete('/:id', deleteNotification)
 
 export default router
