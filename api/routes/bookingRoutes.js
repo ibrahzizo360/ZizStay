@@ -4,7 +4,7 @@ import { verifyAdmin, authenticateUser } from "../middlewares/authMiddleware.js"
 
 const router = express.Router();
 
-router.post("/:id", authenticateUser, verifyAdmin, bookHotelRooms);
+router.post("/:id", authenticateUser, bookHotelRooms);
 
 router.get('/', authenticateUser, verifyAdmin, getBookings);
 
